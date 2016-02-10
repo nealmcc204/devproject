@@ -8,7 +8,7 @@ public abstract class Unit : MonoBehaviour {
 	private int maxHealth;
 	private int speed;
 
-	public abstract void Start();
+	//public abstract void Start();
 
 	public void SetHealth(int h)
 	{

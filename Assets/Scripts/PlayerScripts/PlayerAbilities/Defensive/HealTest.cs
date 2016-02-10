@@ -2,6 +2,11 @@
 using System.Collections;
 
 public class HealTest : DefensiveAbility {
+
+	public override void Start()
+	{
+		SetAbilityTag ("Heal Test");
+	}
     
     public override void Execute(Player target)
     {

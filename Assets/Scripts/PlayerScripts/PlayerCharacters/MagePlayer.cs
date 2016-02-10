@@ -5,7 +5,7 @@ using System;
 class MagePlayer : Player 
 {
     // Use this for initialization
-    public override void Start () {
+    void Start () {
         SetMaxHealth(75);
         SetHealth(GetMaxHealth());
         SetSpeed(100);

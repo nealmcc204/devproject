@@ -18,8 +18,10 @@ public abstract class Player : Unit {
                 present = true;
             }
         }
-        if (!present)
-            offensiveAbilities.Add(oa); 
+		if (!present) {
+			oa.Start ();
+			offensiveAbilities.Add (oa);
+		}
     }
 
     public void RemoveOffensiveAbility(OffensiveAbility oa)
@@ -40,8 +42,10 @@ public abstract class Player : Unit {
                 present = true;
             }
         }
-        if (!present)
-        defensiveAbilities.Add(da);
+		if (!present) {
+			da.Start ();
+			defensiveAbilities.Add (da);
+		}
     }
     
     public void RemoveDefensiveAbility(DefensiveAbility da)

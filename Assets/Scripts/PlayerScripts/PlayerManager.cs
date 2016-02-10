@@ -8,11 +8,8 @@ public class PlayerManager : MonoBehaviour {
     
     
     void Start () {
-        int numPlayers = 2;
-        for (int i = 0; i < numPlayers; i++)
-        {
-            Players[i].Start();   
-        }
+
+
     }
     
     // Update is called once per frame

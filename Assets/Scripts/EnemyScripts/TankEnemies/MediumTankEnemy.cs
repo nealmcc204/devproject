@@ -5,7 +5,7 @@ using System;
 class MediumTankEnemy : TankEnemy
 {
 
-    public override void Start()
+    void Start()
     {
         SetMaxHealth(200);
         SetHealth(GetMaxHealth());

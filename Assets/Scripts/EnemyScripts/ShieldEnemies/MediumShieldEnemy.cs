@@ -5,7 +5,7 @@ using System;
 class MediumShieldEnemy : ShieldEnemy
 {
 
-    public override void Start()
+    void Start()
     {
         SetMaxHealth(125);
         SetHealth(GetMaxHealth());

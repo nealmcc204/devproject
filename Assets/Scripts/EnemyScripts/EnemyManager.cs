@@ -9,12 +9,6 @@ public class EnemyManager : MonoBehaviour {
     
 
     void Start () {
-        
-        for (int i = 0; i < numEnemies; i++)
-        {
-            Enemies[i]. Start();   
-        }
-
         int health =  Enemies[0].GetCurrentHealth();
         health = Enemies[1].GetCurrentHealth();
 	}

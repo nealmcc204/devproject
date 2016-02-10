@@ -5,7 +5,7 @@ using System;
 class EasyHealerEnemy : HealerEnemy
 {
 
-    public override void Start()
+    void Start()
     {
         SetMaxHealth(75);
         SetHealth(GetMaxHealth());

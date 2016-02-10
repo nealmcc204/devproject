@@ -5,7 +5,7 @@ using System;
 class EasyTankEnemy : TankEnemy
 {
 
-    public override void Start()
+    void Start()
     {
         SetMaxHealth(150);
         SetHealth(GetMaxHealth());

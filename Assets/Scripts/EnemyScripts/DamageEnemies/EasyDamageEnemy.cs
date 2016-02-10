@@ -4,7 +4,7 @@ using System;
 
 class EasyDamageEnemy : DamageEnemy {
 
-    public override void Start()
+    void Start()
     {
         SetMaxHealth(75);
         SetHealth(GetMaxHealth());
