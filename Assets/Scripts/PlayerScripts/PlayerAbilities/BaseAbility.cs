@@ -2,18 +2,7 @@
 using System.Collections;
 
 public abstract class BaseAbility {
-	
-	private string abilityTag;
 
-	public abstract void Start();
+	public abstract string GetAbilityTag ();
 
-	public string GetAbilityTag()
-	{
-		return abilityTag;
-	}
-
-	public void SetAbilityTag(string t)
-	{
-		abilityTag = t;
-	}
 }

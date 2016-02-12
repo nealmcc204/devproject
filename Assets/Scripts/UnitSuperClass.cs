@@ -7,8 +7,11 @@ public abstract class Unit : MonoBehaviour {
 	private int health;
 	private int maxHealth;
 	private int speed;
+	private Shield shield;
 
-	//public abstract void Start();
+	void Start(){
+		shield = new Shield();
+	}
 
 	public void SetHealth(int h)
 	{
@@ -23,16 +26,28 @@ public abstract class Unit : MonoBehaviour {
 		return health;
 	}
 
-	public void RestoreHealth(int h)
+	public bool RestoreHealth(int h)
 	{
-		health += h;
-		if (health > maxHealth)
-			health = maxHealth;
+		if (health == maxHealth) {
+			return false;
+		} else {
+			health += h;
+			if (health > maxHealth)
+				health = maxHealth;
+
+			return true;
+		}
 	}
 
-	public void ReduceHealth(int d)
+	public bool ReduceHealth(int damage, Shield shield, ElementType attackElement)
 	{
-		health -= d;
+		if (shield.GetShieldType() == ElementType.NONE || shield.GetShieldType() != attackElement) {
+			health -= damage;
+			return true;
+		} 
+		else {
+			return false;
+		}
 		//if health <= 0 then dead;
 	}
 	
@@ -54,5 +69,15 @@ public abstract class Unit : MonoBehaviour {
 	public int GetSpeed()
 	{
 		return speed;
+	}
+
+	public Shield GetShield()
+	{
+		return shield;
+	}
+
+	public void SetShieldType(ElementType e)
+	{
+		shield.SetShieldType(e);
 	}
 }

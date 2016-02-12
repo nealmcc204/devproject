@@ -3,13 +3,17 @@ using System.Collections;
 
 public class DamageTest : OffensiveAbility {
 
-	public override void Start()
+	public override bool Execute(Enemy target)
 	{
-		SetAbilityTag ("Damage Test");
+		bool success;
+		ElementType attackElement = ElementType.FIRE;
+		success = target.ReduceHealth (20, target.GetShield(), attackElement);
+		return success;
 	}
 
-	public override void Execute(Enemy target)
+	public override string GetAbilityTag()
 	{
-		target.ReduceHealth (20);
+		string at = "Damage Test";
+		return at;
 	}
 }

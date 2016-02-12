@@ -19,7 +19,6 @@ public abstract class Player : Unit {
             }
         }
 		if (!present) {
-			oa.Start ();
 			offensiveAbilities.Add (oa);
 		}
     }
@@ -43,7 +42,6 @@ public abstract class Player : Unit {
             }
         }
 		if (!present) {
-			da.Start ();
 			defensiveAbilities.Add (da);
 		}
     }
@@ -56,13 +54,13 @@ public abstract class Player : Unit {
         }
     }
 
-    public void UseAbility(DefensiveAbility ab, Player target)
+    public bool UseAbility(DefensiveAbility ab, Player target)
     {
-        ab.Execute(target);
+        return ab.Execute(target);
     }
 
-    public void UseAbility(OffensiveAbility ab, Enemy target)
+    public bool UseAbility(OffensiveAbility ab, Enemy target)
     {
-        ab.Execute(target);
+        return ab.Execute(target);
     }
 }

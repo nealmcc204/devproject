@@ -3,15 +3,17 @@ using System.Collections;
 
 public class HealTest : DefensiveAbility {
 
-	public override void Start()
-	{
-		SetAbilityTag ("Heal Test");
-	}
-    
-    public override void Execute(Player target)
+    public override bool Execute(Player target)
     {
+		bool success;
         int heal = (target.GetMaxHealth() / 4);
-		target.RestoreHealth (heal);
+		success = target.RestoreHealth (heal);
+		return success;
     }
+
+	public override string GetAbilityTag()
+	{
+		return "Heal Test";
+	}
 
 }
