@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 class EasyDamageEnemy : DamageEnemy {
 
@@ -9,20 +10,24 @@ class EasyDamageEnemy : DamageEnemy {
         SetMaxHealth(75);
         SetHealth(GetMaxHealth());
 		SetSpeed(100);
+		SetShield (ElementType.NONE);
     }
 
-    public override void DoMove()
+	public override void DoMove(List<Player> players, List<Enemy> enemies)
     {
-        throw new NotImplementedException();
+		Player target = FindLowestPercentageHealth (players);
+		PrimaryMove (target);
     }
 
-    public override void PrimaryMove()
+	private void PrimaryMove(Player target)
     {
-        throw new NotImplementedException();
+		target.ReduceHealth (20, target.GetShield(), ElementType.FIRE);
+		Console.WriteLine("Damaged", target.tag, "for 20");
     }
 
-    public override void SpecialMove()
+    private void SpecialMove()
     {
+		//Medium Enemy Will have special Move, which attacks two players. Hard Enemy will hit both, with a random element.
         throw new NotImplementedException();
     }
 

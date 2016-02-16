@@ -13,6 +13,7 @@ class WarriorPlayer : Player
 	    SetSpeed(75);
 		OffensiveAbility damageTest = new DamageTest ();
 		AddOffensiveAbility (damageTest);
+		SetShield (ElementType.NONE);
     }
 
     // Update is called once per frame

@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shield : MonoBehaviour {
+public class Shield {
 
 	// Use this for initialization
-	ElementType shield;
+	ElementType element;
+
+	public Shield()
+	{
+		element = ElementType.NONE;
+	}
 
 	void Start () {
-		shield = ElementType.NONE;
+
 	}
 	
 	// Update is called once per frame
@@ -17,11 +22,11 @@ public class Shield : MonoBehaviour {
 
 	public void SetShieldType(ElementType e)
 	{
-		shield = e;
+		element = e;
 	}
 
 	public ElementType GetShieldType()
 	{
-		return shield;
+		return element;
 	}
 }

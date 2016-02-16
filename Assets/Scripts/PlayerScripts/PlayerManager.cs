@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerManager : MonoBehaviour {
 
     // Use this for initialization
-    public Player[] Players = new Player[2];
+	public List<Player> Players = new List<Player>();
     
     
     void Start () {

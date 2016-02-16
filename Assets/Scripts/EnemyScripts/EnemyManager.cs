@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyManager : MonoBehaviour {
 
     // Use this for initialization
-    public int numEnemies;
-    public Enemy[] Enemies = new Enemy[10];
-    
+	public List<Enemy> Enemies = new List<Enemy>();
 
     void Start () {
         int health =  Enemies[0].GetCurrentHealth();
@@ -17,9 +16,4 @@ public class EnemyManager : MonoBehaviour {
 	void Update () {
 	
 	}
-
-    public int GetNumberEnemies()
-    {
-        return numEnemies;
-    }
 }

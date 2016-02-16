@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 class EasyHealerEnemy : HealerEnemy
 {
@@ -10,20 +11,27 @@ class EasyHealerEnemy : HealerEnemy
         SetMaxHealth(75);
         SetHealth(GetMaxHealth());
         SetSpeed(50);
+		SetShield (ElementType.NONE);
     }
 
-    public override void DoMove()
+	public override void DoMove(List<Player> players, List<Enemy> enemies)
     {
-        throw new NotImplementedException();
+		Enemy target = FindLowestPercentageHealth (enemies);
+		PrimaryMove (target);
     }
 
-    public override void PrimaryMove()
+	private void PrimaryMove(Enemy target)
     {
-        throw new NotImplementedException();
+		//Medium difficulty will heal multiple targets.
+		int heal = target.GetMaxHealth()/5;
+		target.RestoreHealth(heal);
+		Console.WriteLine ("Healed", target.tag," for:", heal);
+
     }
 
-    public override void SpecialMove()
+    private void SpecialMove()
     {
+		//This will be a revive and only present in Hard classes.
         throw new NotImplementedException();
     }
 

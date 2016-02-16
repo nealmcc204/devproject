@@ -10,7 +10,10 @@ class MagePlayer : Player
         SetHealth(GetMaxHealth());
         SetSpeed(100);
 		DefensiveAbility healTest = new HealTest ();
+		DefensiveAbility shieldTest = new ShieldTest ();
 		AddDefensiveAbility(healTest);
+		AddDefensiveAbility (shieldTest);
+		SetShield (ElementType.NONE);
 	}
 	
 	// Update is called once per frame

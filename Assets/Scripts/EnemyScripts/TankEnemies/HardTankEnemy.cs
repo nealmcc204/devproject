@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 class HardTankEnemy : TankEnemy
 {
@@ -10,19 +11,20 @@ class HardTankEnemy : TankEnemy
         SetMaxHealth(250);
         SetHealth(GetMaxHealth());
         SetSpeed(30);
+		SetShield (ElementType.NONE);
     }
 
-    public override void DoMove()
+	public override void DoMove(List<Player> players, List<Enemy> enemies)
     {
         throw new NotImplementedException();
     }
 
-    public override void PrimaryMove()
+    private void PrimaryMove()
     {
         throw new NotImplementedException();
     }
 
-    public override void SpecialMove()
+    private void SpecialMove()
     {
         throw new NotImplementedException();
     }

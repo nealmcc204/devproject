@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 class MediumHealerEnemy : HealerEnemy
 {
@@ -10,19 +11,20 @@ class MediumHealerEnemy : HealerEnemy
         SetMaxHealth(100);
         SetHealth(GetMaxHealth());
         SetSpeed(50);
+		SetShield (ElementType.NONE);
     }
 
-    public override void DoMove()
+	public override void DoMove(List<Player> players, List<Enemy> enemies)
     {
         throw new NotImplementedException();
     }
 
-    public override void PrimaryMove()
+    private void PrimaryMove()
     {
         throw new NotImplementedException();
     }
 
-    public override void SpecialMove()
+    private void SpecialMove()
     {
         throw new NotImplementedException();
     }

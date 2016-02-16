@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 class EasyTankEnemy : TankEnemy
 {
@@ -10,20 +11,24 @@ class EasyTankEnemy : TankEnemy
         SetMaxHealth(150);
         SetHealth(GetMaxHealth());
         SetSpeed(30);
+		SetShield (ElementType.NONE);
     }
 
-    public override void DoMove()
+	public override void DoMove(List<Player> players, List<Enemy> enemies)
     {
-        throw new NotImplementedException();
+		Player target = FindLowestPercentageHealth (players);
+		PrimaryMove (target);
     }
 
-    public override void PrimaryMove()
+	private void PrimaryMove(Player target)
     {
-        throw new NotImplementedException();
+		target.ReduceHealth (10, target.GetShield(), ElementType.NONE);
+		Console.WriteLine (tag, "Damaged ", target.tag, "for 10");
     }
 
-    public override void SpecialMove()
+    private void SpecialMove()
     {
+		//will taunt at Hard(?) difficulties, forcing players to attack it. May also gain element damage.
         throw new NotImplementedException();
     }
 
