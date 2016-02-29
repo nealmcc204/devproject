@@ -63,4 +63,14 @@ public abstract class Player : Unit {
     {
         return ab.Execute(target);
     }
+
+	public List<DefensiveAbility> GetDefensiveAbilities()
+	{
+		return defensiveAbilities;
+	}
+
+	public List<OffensiveAbility> GetOffensiveAbilities()
+	{
+		return offensiveAbilities;
+	}
 }
