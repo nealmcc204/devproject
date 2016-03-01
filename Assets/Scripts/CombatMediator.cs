@@ -41,7 +41,7 @@ public class CombatMediator : MonoBehaviour {
 		playerManager.Players[0].SetHealth((playerManager.Players[0].GetMaxHealth() - 50));
 		health =  playerManager.Players[0].GetCurrentHealth();
 
-		success = playerManager.Players[1].UseAbility(playerManager.Players[1].defensiveAbilities[0], playerManager.Players[0]);
+		suc cess = playerManager.Players[1].UseAbility(playerManager.Players[1].defensiveAbilities[0], playerManager.Players[0]);
 		health = playerManager.Players[0].GetCurrentHealth();
 		string abilitytag =playerManager.Players [1].defensiveAbilities [0].GetAbilityTag ();
 
