@@ -1,0 +1,14 @@
+Create UIs for
+1)Combat
+2)Levelling up
+3)Main menu
+
+Make more abilities for players
+
+Set up monster moves
+
+Set up turn controller
+
+Win and Lose conditions.
+
+Survey questions
