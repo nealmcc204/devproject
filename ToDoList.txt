@@ -12,3 +12,7 @@ Set up turn controller
 Win and Lose conditions.
 
 Survey questions
+foreach(ability in abilities)
+	create button corresponding to that abilitiy in whatever position
+
+Probably going to need 2 buttons for each ability created, one for use and one for adding to the player roster 

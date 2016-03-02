@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ShowMageAbilities : MonoBehaviour {
@@ -15,6 +16,7 @@ public class ShowMageAbilities : MonoBehaviour {
 
 	public void ShowAbilities()
 	{
-		Debug.Log ("Hello");
+		SceneManager.LoadScene ("ManageMageAbilities");
 	}
+		
 }

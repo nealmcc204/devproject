@@ -1,10 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 class WarriorPlayer : Player
 {
+	public static WarriorPlayer wp;
 
+	void Awake() {//Warrior Player Singleton
+		if (!wp) {
+			wp = this;
+			DontDestroyOnLoad (gameObject);
+		} else {
+			Destroy (gameObject);
+		}
+	}
     // Use this for initialization
     void Start()
     {
@@ -21,4 +31,9 @@ class WarriorPlayer : Player
     {
 
     }
+
+	public override void DoMove(List<Player> players, List<Enemy> enemies)
+	{
+		UseAbility (offensiveAbilities [0], enemies [0]);
+	}
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class Unit : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public abstract class Unit : MonoBehaviour {
 	private int speed;
 	private bool dead;
 	public Shield shield;
+
+	public abstract void DoMove(List<Player> players, List<Enemy> enemies);
 
 	void Start(){
 		shield = new Shield ();

@@ -34,25 +34,15 @@ public class CombatMediator : MonoBehaviour {
 
 	public void TestFight()
 	{
-		/*Debug.Log ("Aye");
-		int health = playerManager.Players[1].GetMaxHealth ();
-		bool success;
+		foreach (Enemy e in enemyManager.Enemies) {
+			e.DoMove (playerManager.Players, enemyManager.Enemies);
+		}
+		Debug.Log ("Execution Complete.");
+		Debug.Log(String.Format("Warrior Player health {0} ", playerManager.Players[0].GetCurrentHealth()));
+	}
 
-		playerManager.Players[0].SetHealth((playerManager.Players[0].GetMaxHealth() - 50));
-		health =  playerManager.Players[0].GetCurrentHealth();
-
-		suc cess = playerManager.Players[1].UseAbility(playerManager.Players[1].defensiveAbilities[0], playerManager.Players[0]);
-		health = playerManager.Players[0].GetCurrentHealth();
-		string abilitytag =playerManager.Players [1].defensiveAbilities [0].GetAbilityTag ();
-
-		success = playerManager.Players [1].UseAbility (playerManager.Players [1].defensiveAbilities [1], playerManager.Players [0]);
-		Shield shield = playerManager.Players [0].GetShield ();
-
-		health = enemyManager.Enemies [0].GetCurrentHealth ();
-		success = playerManager.Players [0].UseAbility (playerManager.Players [0].offensiveAbilities [0], enemyManager.Enemies [0]);
-		health = enemyManager.Enemies [0].GetCurrentHealth ();
-
-		enemyManager.Enemies [0].DoMove (playerManager.Players, enemyManager.Enemies);*/
+	public void StartGame()
+	{
 		units = new List<Unit> ();
 		foreach (Player p in playerManager.Players) {
 			units.Add (p);
@@ -62,11 +52,49 @@ public class CombatMediator : MonoBehaviour {
 		}
 		SortUnitsBySpeed (units);
 
-		foreach (Enemy e in enemyManager.Enemies) {
-			e.DoMove (playerManager.Players, enemyManager.Enemies);
-		}
-		Debug.Log ("Execution Complete.");
-		Debug.Log(String.Format("Warrior Player health {0} ", playerManager.Players[0].GetCurrentHealth()));
-
+		CombatPhase ();
 	}
+
+	private void CombatPhase()
+	{
+		while (!CombatComplete ()) {
+			foreach (Unit u in units) {
+				if (!u.IsDead ())
+					u.DoMove (playerManager.Players, enemyManager.Enemies);
+			}
+		}
+		//if victory go to victory / level up screen
+		//if defeat try again
+	}
+
+	private bool Defeat()
+	{
+		foreach (Player p in playerManager.Players) {
+			if (!p.IsDead ()) {
+				return false;
+			}
+		}
+		Debug.Log ("Defeat");
+		return true;
+	}
+
+	private bool Victory()
+	{
+		foreach (Enemy e in enemyManager.Enemies) {
+			if (!e.IsDead ()) {
+				return false;
+			}
+		}
+		Debug.Log ("Victory");
+		return true;
+	}
+
+	private bool CombatComplete()
+	{
+		if (Victory () || Defeat ()) {
+			return true;
+		}
+		return false;
+	}
+
 }

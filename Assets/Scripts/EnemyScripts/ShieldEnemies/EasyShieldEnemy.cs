@@ -18,13 +18,15 @@ class EasyShieldEnemy : ShieldEnemy
 	public override void DoMove(List<Player> players, List<Enemy> enemies)
     {
 		List<Enemy> targets = new List<Enemy>();
-		foreach (Enemy e in enemies) {//checks if enemy is already shielded
-			if (e.GetShield ().GetShieldType () == ElementType.NONE) {
+		foreach (Enemy e in enemies) {//checks if enemy is already shielded or if it is dead
+			if (e.GetShield ().GetShieldType () == ElementType.NONE && !e.IsDead()) {
 				targets.Add (e);
 			}
 		}
-		Enemy target = FindLowestPercentageHealth (targets);
-		PrimaryMove (target);
+		if (targets.Count > 0) {//if there are no valid targets dont do the move
+			Enemy target = FindLowestPercentageHealth (targets);
+			PrimaryMove (target);
+		}
     }
 
 	private void PrimaryMove(Enemy target)

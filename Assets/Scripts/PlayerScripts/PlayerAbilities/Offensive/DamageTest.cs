@@ -6,8 +6,8 @@ public class DamageTest : OffensiveAbility {
 	public override bool Execute(Enemy target)
 	{
 		bool success;
-		ElementType attackElement = ElementType.FIRE;
-		success = target.ReduceHealth (20, target.GetShield(), attackElement);
+		ElementType attackElement = ElementType.EARTH;
+		success = target.ReduceHealth (60, target.GetShield(), attackElement);
 		return success;
 	}
 
