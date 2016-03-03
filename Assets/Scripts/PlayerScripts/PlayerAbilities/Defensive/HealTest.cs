@@ -16,4 +16,10 @@ public class HealTest : DefensiveAbility {
 		return "Heal Test";
 	}
 
+	public override string GetAbilityDescription()
+	{
+		string ad = "Heals a single friendly target for 25% of their HP."; 
+		return ad;
+	}
+
 }

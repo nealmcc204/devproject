@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-class MagePlayer : Player 
+public class MagePlayer : Player 
 {
 	public static MagePlayer mp;
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-class WarriorPlayer : Player
+public class WarriorPlayer : Player
 {
 	public static WarriorPlayer wp;
 

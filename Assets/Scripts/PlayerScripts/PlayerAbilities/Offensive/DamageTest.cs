@@ -3,11 +3,13 @@ using System.Collections;
 
 public class DamageTest : OffensiveAbility {
 
+	int damage = 50;
+	ElementType attackElement = ElementType.EARTH;
+
 	public override bool Execute(Enemy target)
 	{
 		bool success;
-		ElementType attackElement = ElementType.EARTH;
-		success = target.ReduceHealth (60, target.GetShield(), attackElement);
+		success = target.ReduceHealth (damage, target.GetShield(), attackElement);
 		return success;
 	}
 
@@ -15,5 +17,11 @@ public class DamageTest : OffensiveAbility {
 	{
 		string at = "Damage Test";
 		return at;
+	}
+
+	public override string GetAbilityDescription()
+	{
+		string ad = "Deals" + damage + "of Earth damage to target. "; 
+		return ad;
 	}
 }

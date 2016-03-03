@@ -5,4 +5,6 @@ public abstract class BaseAbility {
 
 	public abstract string GetAbilityTag ();
 
+	public abstract string GetAbilityDescription();
+
 }

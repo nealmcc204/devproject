@@ -14,4 +14,11 @@ public class ShieldTest : DefensiveAbility {
 		return "Shield Test";
 	}
 
+	public override string GetAbilityDescription()
+	{
+		string ad = "Shields a single friendly target against a single Fire attack."; 
+		return ad;
+	}
+
+
 }
