@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
-using System.Collections;
 using System;
 using System.Collections.Generic;
 
-class MediumDamageEnemy : DamageEnemy
+class HardDamageEnemy : DamageEnemy
 {
 	int damage;
 	int cooldown;

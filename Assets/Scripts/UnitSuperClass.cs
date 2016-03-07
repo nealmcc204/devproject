@@ -37,18 +37,22 @@ public abstract class Unit : MonoBehaviour {
 
 	public bool RestoreHealth(int h)
 	{
-		if (GetStatus () == Status.BURNED) {
-			h = h / 2;
-			SetStatus (Status.NONE);
-		}
-		if (health == maxHealth) {
-			return false;
-		} else {
-			health += h;
-			if (health > maxHealth)
-				health = maxHealth;
+		if (!IsDead ()) {
+			if (GetStatus () == Status.BURNED) {
+				h = h / 2;
+				SetStatus (Status.NONE);
+			}
+			if (health == maxHealth) {
+				return false;
+			} else {
+				health += h;
+				if (health > maxHealth)
+					health = maxHealth;
 
-			return true;
+				return true;
+			}
+		} else {
+			return false;
 		}
 	}
 
@@ -57,6 +61,7 @@ public abstract class Unit : MonoBehaviour {
 		if (s.GetShieldType() == ElementType.NONE || s.GetShieldType() != ae) {
 			health -= damage;
 			if (GetCurrentHealth () <= 0) {
+				SetHealth (0);
 				SetDead (true);
 			}
 			return true;
@@ -117,7 +122,6 @@ public abstract class Unit : MonoBehaviour {
 	{
 		if (IsDead ()) {
 			SetDead (false);
-			SetHealth ((int)(GetMaxHealth () * 0.2));
 		}
 	}
 
