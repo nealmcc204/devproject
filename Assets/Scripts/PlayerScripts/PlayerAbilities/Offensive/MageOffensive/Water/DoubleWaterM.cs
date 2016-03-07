@@ -2,15 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DoubleFireS : BaseFire {
+public class DoubleWaterM : BaseWater {
 
 	public override bool Execute(List<Enemy> targets)
 	{
 		bool success = false;
 		for (int i = 0; i < 2; i++) {
-			success = targets [i].ReduceHealth (SmallDamage (), targets [i].GetShield (), AttackElement ());
+			success = targets [i].ReduceHealth (MediumDamage (), targets [i].GetShield (), AttackElement ());
 			if (success) {
-				targets[i].SetStatus (Status.BURNED);
+				targets[i].SetStatus (Status.FROZEN);
 			}
 		}
 		return success;
@@ -18,13 +18,13 @@ public class DoubleFireS : BaseFire {
 
 	public override string GetAbilityTag()
 	{
-		string at = "DoubleFireS";
+		string at = "DoubleFireM";
 		return at;
 	}
 
 	public override string GetAbilityDescription()
 	{
-		string ad = "Deals" + SmallDamage() + "of fire damage to two enemies. "; 
+		string ad = "Deals" + MediumDamage() + "of fire damage to two enemies. "; 
 		return ad;
 	}
 

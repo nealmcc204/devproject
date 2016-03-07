@@ -37,6 +37,10 @@ public abstract class Unit : MonoBehaviour {
 
 	public bool RestoreHealth(int h)
 	{
+		if (GetStatus () == Status.BURNED) {
+			h = h / 2;
+			SetStatus (Status.NONE);
+		}
 		if (health == maxHealth) {
 			return false;
 		} else {
@@ -80,7 +84,10 @@ public abstract class Unit : MonoBehaviour {
 	
 	public int GetSpeed()
 	{
-		return speed;
+		if (GetStatus () == Status.FROZEN)
+			return speed / 2;
+		else
+			return speed;
 	}
 
 	public Shield GetShield()

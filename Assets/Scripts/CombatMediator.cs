@@ -30,6 +30,11 @@ public class CombatMediator : MonoBehaviour {
 				}
 			}
 		}
+		foreach (Unit un in u) {
+			if (un.GetStatus() == Status.FROZEN) {//only frozen for one turn, once speed is calculated for this turn, unfrozen.
+				un.SetStatus (Status.NONE);
+			}
+		}
 	}
 
 	public void TestFight()
@@ -50,7 +55,6 @@ public class CombatMediator : MonoBehaviour {
 		foreach (Enemy e in enemyManager.Enemies) {
 			units.Add (e);
 		}
-		SortUnitsBySpeed (units);
 
 		CombatPhase ();
 	}
@@ -58,9 +62,11 @@ public class CombatMediator : MonoBehaviour {
 	private void CombatPhase()
 	{
 		while (!CombatComplete ()) {
+			SortUnitsBySpeed (units);
 			foreach (Unit u in units) {
-				if (!u.IsDead ())
+				if (!u.IsDead ()) {
 					u.DoMove (playerManager.Players, enemyManager.Enemies);
+				}
 			}
 		}
 		//if victory go to victory / level up screen

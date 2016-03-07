@@ -2,25 +2,27 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SingleFireS : BaseFire {
+public class SingleFireL : BaseFire {
 
 	public override bool Execute(Enemy target)
 	{
 		bool success = false;
-		success = target.ReduceHealth (SmallDamage(), target.GetShield(), AttackElement() );
-		target.SetStatus (Status.BURNED);
+		success = target.ReduceHealth (LargeDamage(), target.GetShield(), AttackElement() );
+		if (success) {
+			target.SetStatus (Status.BURNED);
+		}
 		return success;
 	}
 
 	public override string GetAbilityTag()
 	{
-		string at = "SingleFireS";
+		string at = "SingleFireL";
 		return at;
 	}
 
 	public override string GetAbilityDescription()
 	{
-		string ad = "Deals" + SmallDamage() + "of fire damage to a single enemy. "; 
+		string ad = "Deals" + LargeDamage() + "of fire damage to a single enemy, and burns them. "; 
 		return ad;
 	}
 

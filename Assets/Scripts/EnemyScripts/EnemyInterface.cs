@@ -42,4 +42,11 @@ using System;
 		return target;
 	}
 
+	protected ElementType RandomElement()
+	{
+		Array enums = Enum.GetValues (typeof(ElementType));
+		System.Random ran = new System.Random ();
+		ElementType ranEle = (ElementType)enums.GetValue(ran.Next(enums.Length));
+		return ranEle;
+	}
 }
