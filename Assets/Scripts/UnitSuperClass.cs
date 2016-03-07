@@ -9,12 +9,14 @@ public abstract class Unit : MonoBehaviour {
 	private int maxHealth;
 	private int speed;
 	private bool dead;
-	public Shield shield;
+	private Shield shield;
+	private Status status;
 
 	public abstract void DoMove(List<Player> players, List<Enemy> enemies);
 
 	void Start(){
 		shield = new Shield ();
+		status = Status.NONE;
 	}
 
 	void Update(){
@@ -110,5 +112,15 @@ public abstract class Unit : MonoBehaviour {
 			SetDead (false);
 			SetHealth ((int)(GetMaxHealth () * 0.2));
 		}
+	}
+
+	public Status GetStatus()
+	{
+		return status;
+	} 
+
+	public void SetStatus(Status s)
+	{
+		status = s;
 	}
 }

@@ -5,7 +5,7 @@ public class HealTest : DefensiveAbility {
 
     public override bool Execute(Player target)
     {
-		bool success;
+		bool success = false;
         int heal = (target.GetMaxHealth() / 4);
 		success = target.RestoreHealth (heal);
 		return success;

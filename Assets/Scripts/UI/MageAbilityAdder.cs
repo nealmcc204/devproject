@@ -29,4 +29,9 @@ public class MageAbilityAdder : MonoBehaviour {
 	{
 		mp.AddDefensiveAbility (new ShieldTest ());
 	}
+
+	public void AddSingleFireS()
+	{
+		mp.AddOffensiveAbility (new SingleFireS ());
+	}
 }
