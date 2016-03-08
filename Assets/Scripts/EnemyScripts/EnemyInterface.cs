@@ -5,6 +5,8 @@ using System;
 
  public abstract class Enemy : Unit {
 
+	bool stunned;
+
 	protected Player FindLowestPercentageHealth (List<Player> units)
 	{
 		if (units.Count == 0)
@@ -49,4 +51,15 @@ using System;
 		ElementType ranEle = (ElementType)enums.GetValue(ran.Next(enums.Length));
 		return ranEle;
 	}
+
+	protected Player GetTaunter (List<Player> units)
+	{
+		foreach (Player p in units) {
+			if (p.GetTaunting ()) {
+				return p;
+			}
+		}
+		return null;
+	}
+
 }

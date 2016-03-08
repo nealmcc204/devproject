@@ -7,11 +7,11 @@ public class TripleEarthS : BaseEarth {
 	public override bool Execute(List<Enemy> targets)
 	{
 		bool success = false;
-		for (int i = 0; i < 3; i++) {
-			success = targets [i].ReduceHealth (SmallDamage (), targets [i].GetShield (), AttackElement ());
+		foreach (Enemy e in targets) {
+			success = e.ReduceHealth (SmallDamage(), e.GetShield(), AttackElement() );
 			if (success) {
-				targets[i].SetStatus (Status.DAZED);
-			}		
+				e.SetStatus (Status.DAZED);
+			}
 		}
 		return success;
 	}

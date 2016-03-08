@@ -6,10 +6,10 @@ public class GreaterRevive : DefensiveAbility {
 
 	public override bool Execute(Player target)
 	{
-		if (target.IsDead) {
+		if (target.GetDead()) {
 			bool success = false;
 			target.Revive ();
-			int heal = (target.GetMaxHealth () * 0.8);
+			int heal = (int)(target.GetMaxHealth () * 0.8);
 			success = target.RestoreHealth (heal);
 			return success;
 		} else {

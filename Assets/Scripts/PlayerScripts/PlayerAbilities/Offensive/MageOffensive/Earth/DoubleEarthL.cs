@@ -7,10 +7,10 @@ public class DoubleEarthL : BaseEarth {
 	public override bool Execute(List<Enemy> targets)
 	{
 		bool success = false;
-		for (int i = 0; i < 2; i++) {
-			success = targets [i].ReduceHealth (LargeDamage (), targets [i].GetShield (), AttackElement ());
+		foreach (Enemy e in targets) {
+			success = e.ReduceHealth (LargeDamage(), e.GetShield(), AttackElement() );
 			if (success) {
-				targets[i].SetStatus (Status.DAZED);
+				e.SetStatus (Status.DAZED);
 			}
 		}
 		return success;
@@ -24,7 +24,7 @@ public class DoubleEarthL : BaseEarth {
 
 	public override string GetAbilityDescription()
 	{
-		string ad = "Deals" + LargeDamage() + "of earth damage to two enemies, and burns them. "; 
+		string ad = "Deals" + LargeDamage() + "of earth damage to two enemies, and dazes them. "; 
 		return ad;
 	}
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ShieldTest : DefensiveAbility {
 
@@ -20,5 +21,9 @@ public class ShieldTest : DefensiveAbility {
 		return ad;
 	}
 
+	public override bool Execute(List<Player> targets)
+	{
+		return false;
+	}
 
 }

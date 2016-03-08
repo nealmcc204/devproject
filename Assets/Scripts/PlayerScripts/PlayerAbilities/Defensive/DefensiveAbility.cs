@@ -4,5 +4,5 @@ using System.Collections.Generic;
 
 public abstract class DefensiveAbility : BaseAbility {
     public abstract bool Execute(Player target);
-	public abstract bool Execture(List<Player> targets); 
+	public abstract bool Execute(List<Player> targets); 
 }

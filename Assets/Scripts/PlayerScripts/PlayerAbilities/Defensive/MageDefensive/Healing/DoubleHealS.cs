@@ -8,7 +8,7 @@ public class DoubleHealS : DefensiveAbility {
 	{
 		bool success = false;
 		foreach (Player p in targets) {
-			int heal = (p.GetMaxHealth () * (1 / 3));
+			int heal = (int)(p.GetMaxHealth () * (1 / 3));
 			success = p.RestoreHealth(heal);
 		}
 		return success;

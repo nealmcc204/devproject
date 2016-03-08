@@ -9,8 +9,12 @@ public abstract class Unit : MonoBehaviour {
 	private int maxHealth;
 	private int speed;
 	private bool dead;
+	private bool taunting;
+	private bool withstanding;
+	private float damageReduction;
 	private Shield shield;
 	private Status status;
+
 
 	public abstract void DoMove(List<Player> players, List<Enemy> enemies);
 
@@ -37,7 +41,7 @@ public abstract class Unit : MonoBehaviour {
 
 	public bool RestoreHealth(int h)
 	{
-		if (!IsDead ()) {
+		if (!GetDead ()) {
 			if (GetStatus () == Status.BURNED) {
 				h = h / 2;
 				SetStatus (Status.NONE);
@@ -56,7 +60,7 @@ public abstract class Unit : MonoBehaviour {
 		}
 	}
 
-	public bool ReduceHealth(int damage, Shield s, ElementType ae)
+	public virtual bool ReduceHealth(int damage, Shield s, ElementType ae)
 	{
 		if (s.GetShieldType() == ElementType.NONE || s.GetShieldType() != ae) {
 			health -= damage;
@@ -108,19 +112,19 @@ public abstract class Unit : MonoBehaviour {
 		shield.SetShieldType (e);
 	}
 
-	public bool IsDead()
+	public bool GetDead()
 	{
 		return dead;
 	}
 
-	private void SetDead(bool d)
+	public void SetDead(bool d)
 	{
 		dead = d;
 	}
 
 	public void Revive()
 	{
-		if (IsDead ()) {
+		if (GetDead ()) {
 			SetDead (false);
 		}
 	}
@@ -133,5 +137,35 @@ public abstract class Unit : MonoBehaviour {
 	public void SetStatus(Status s)
 	{
 		status = s;
+	}
+
+	public bool GetTaunting()
+	{
+		return taunting;
+	}
+
+	public void SetTaunt(bool t)
+	{
+		taunting = t;
+	}
+
+	public float GetDamageReduction()
+	{
+		return damageReduction;
+	}
+
+	public void SetDamageReduction(float dr)
+	{
+		damageReduction = dr;
+	}
+
+	public bool GetWithstanding()
+	{
+		return withstanding;
+	}
+
+	public void SetWithstanding(bool w)
+	{
+		withstanding = w;
 	}
 }

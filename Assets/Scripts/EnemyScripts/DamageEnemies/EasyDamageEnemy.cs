@@ -18,7 +18,11 @@ class EasyDamageEnemy : DamageEnemy {
 
 	public override void DoMove(List<Player> players, List<Enemy> enemies)
     {
-		Player target = FindLowestPercentageHealth (players);
+		Player target = GetTaunter (players);
+
+		if(target == null)
+			 target = FindLowestPercentageHealth (players);
+		
 		if (GetStatus () == Status.DAZED) {
 			PrimaryMove (target);
 			SetStatus (Status.NONE);

@@ -19,7 +19,7 @@ class EasyShieldEnemy : ShieldEnemy
     {
 		List<Enemy> targets = new List<Enemy>();
 		foreach (Enemy e in enemies) {//checks if enemy is already shielded or if it is dead
-			if (e.GetShield ().GetShieldType () == ElementType.NONE && !e.IsDead()) {
+			if (e.GetShield ().GetShieldType () == ElementType.NONE && !e.GetDead()) {
 				targets.Add (e);
 			}
 		}

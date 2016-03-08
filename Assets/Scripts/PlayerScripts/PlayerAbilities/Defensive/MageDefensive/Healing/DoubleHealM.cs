@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DoubleHealS : DefensiveAbility {
+public class DoubleHealM : DefensiveAbility {
 
 	public override bool Execute(List<Player> targets)
 	{
 		bool success = false;
 		foreach (Player p in targets) {
-			int heal = (p.GetMaxHealth () * (2 / 3));
+			int heal = (int)(p.GetMaxHealth () * (2 / 3));
 			success = p.RestoreHealth(heal);
 		}
 		return success;

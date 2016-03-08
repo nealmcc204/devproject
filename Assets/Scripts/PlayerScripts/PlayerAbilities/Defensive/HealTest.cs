@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HealTest : DefensiveAbility {
 
@@ -20,6 +21,11 @@ public class HealTest : DefensiveAbility {
 	{
 		string ad = "Heals a single friendly target for 25% of their HP."; 
 		return ad;
+	}
+
+	public override bool Execute(List<Player> targets)
+	{
+		return false;
 	}
 
 }

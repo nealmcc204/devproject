@@ -7,7 +7,7 @@ public class SingleHealFull : DefensiveAbility {
 	public override bool Execute(Player target)
 	{
 		bool success = false;
-		int heal = (target.GetMaxHealth());
+		int heal = (int)(target.GetMaxHealth());
 		success = target.RestoreHealth (heal);
 		return success;
 	}

@@ -7,11 +7,11 @@ public class TripleWaterM : BaseWater {
 	public override bool Execute(List<Enemy> targets)
 	{
 		bool success = false;
-		for (int i = 0; i < 3; i++) {
-			success = targets [i].ReduceHealth (MediumDamage (), targets [i].GetShield (), AttackElement ());
+		foreach (Enemy e in targets) {
+			success = e.ReduceHealth (MediumDamage(), e.GetShield(), AttackElement() );
 			if (success) {
-				targets[i].SetStatus (Status.FROZEN);
-			}		
+				e.SetStatus (Status.FROZEN);
+			}
 		}
 		return success;
 	}

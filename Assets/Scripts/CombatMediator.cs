@@ -64,8 +64,13 @@ public class CombatMediator : MonoBehaviour {
 		while (!CombatComplete ()) {
 			SortUnitsBySpeed (units);
 			foreach (Unit u in units) {
-				if (!u.IsDead ()) {
+				if (!u.GetDead () && u.GetStatus() != Status.STUNNED) {
+					if (u.GetTaunting ()) {
+						u.SetTaunt (false);
+					}
 					u.DoMove (playerManager.Players, enemyManager.Enemies);
+				} else {
+					u.SetStatus (Status.NONE);
 				}
 			}
 		}
@@ -76,7 +81,7 @@ public class CombatMediator : MonoBehaviour {
 	private bool Defeat()
 	{
 		foreach (Player p in playerManager.Players) {
-			if (!p.IsDead ()) {
+			if (!p.GetDead ()) {
 				return false;
 			}
 		}
@@ -87,7 +92,7 @@ public class CombatMediator : MonoBehaviour {
 	private bool Victory()
 	{
 		foreach (Enemy e in enemyManager.Enemies) {
-			if (!e.IsDead ()) {
+			if (!e.GetDead ()) {
 				return false;
 			}
 		}
@@ -102,5 +107,4 @@ public class CombatMediator : MonoBehaviour {
 		}
 		return false;
 	}
-
 }
