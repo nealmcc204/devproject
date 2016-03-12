@@ -24,7 +24,7 @@ public class DoubleEarthM : BaseEarth {
 
 	public override string GetAbilityDescription()
 	{
-		string ad = "Deals" + MediumDamage() + "of earth damage to two enemies, and dazes them. "; 
+		string ad = "Deals" + MediumDamage() + "of Earth damage to two enemies, and dazes them. "; 
 		return ad;
 	}
 

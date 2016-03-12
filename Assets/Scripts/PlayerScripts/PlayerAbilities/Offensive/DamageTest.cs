@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class DamageTest : OffensiveAbility {
 
 	int damage = 50;
-	ElementType attackElement = ElementType.EARTH;
+	ElementType attackElement = ElementType.FIRE;
 
 	public override bool Execute(Enemy target)
 	{
@@ -27,7 +27,7 @@ public class DamageTest : OffensiveAbility {
 
 	public override string GetAbilityDescription()
 	{
-		string ad = "Deals" + damage + "of Earth damage to target. "; 
+		string ad = "Deals" + damage + "of Fire damage to target. "; 
 		return ad;
 	}
 }

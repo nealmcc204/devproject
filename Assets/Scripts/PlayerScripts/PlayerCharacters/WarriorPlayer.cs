@@ -21,8 +21,8 @@ public class WarriorPlayer : Player
         SetMaxHealth(100);
         SetHealth(GetMaxHealth());
 	    SetSpeed(75);
-		OffensiveAbility damageTest = new DamageTest ();
-		AddOffensiveAbility (damageTest);
+		AddOffensiveAbility (new StunSmashS());
+		AddOffensiveAbility (new DoubleStrikeS ());
 		SetShield (ElementType.NONE);
     }
 

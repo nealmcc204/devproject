@@ -22,7 +22,7 @@ public class SingleEarthL : BaseEarth {
 
 	public override string GetAbilityDescription()
 	{
-		string ad = "Deals" + LargeDamage() + "of earth damage to a single enemy, and dazes them. "; 
+		string ad = "Deals" + LargeDamage() + "of Earth damage to a single enemy, and dazes them. "; 
 		return ad;
 	}
 

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
 public class AllEarthS : BaseEarth {
 
 	public override bool Execute(List<Enemy> targets)
@@ -24,7 +23,7 @@ public class AllEarthS : BaseEarth {
 
 	public override string GetAbilityDescription()
 	{
-		string ad = "Deals" + SmallDamage() + "of earth damage to all enemies, and dazes them. "; 
+		string ad = "Deals" + SmallDamage() + "of Earth damage to all enemies, and dazes them. "; 
 		return ad;
 	}
 

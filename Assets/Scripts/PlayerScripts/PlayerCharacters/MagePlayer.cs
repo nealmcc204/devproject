@@ -20,10 +20,10 @@ public class MagePlayer : Player
         SetMaxHealth(75);
         SetHealth(GetMaxHealth());
         SetSpeed(100);
-		DefensiveAbility healTest = new HealTest ();
-		DefensiveAbility shieldTest = new ShieldTest ();
-		AddDefensiveAbility(healTest);
-		AddDefensiveAbility (shieldTest);
+		AddOffensiveAbility(new SingleFireS());
+		AddOffensiveAbility (new SingleEarthS());
+		AddOffensiveAbility (new SingleWaterS());
+		AddDefensiveAbility (new SingleHealS());
 		SetShield (ElementType.NONE);
 	}
 	

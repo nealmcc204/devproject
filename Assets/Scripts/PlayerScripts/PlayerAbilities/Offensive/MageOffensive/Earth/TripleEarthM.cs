@@ -24,7 +24,7 @@ public class TripleEarthM : BaseEarth {
 
 	public override string GetAbilityDescription()
 	{
-		string ad = "Deals" + MediumDamage() + "of earth damage to three enemies, and dazes them. "; 
+		string ad = "Deals" + MediumDamage() + "of Earth damage to three enemies, and dazes them. "; 
 		return ad;
 	}
 

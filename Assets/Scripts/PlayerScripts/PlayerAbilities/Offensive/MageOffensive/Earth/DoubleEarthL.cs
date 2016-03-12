@@ -24,7 +24,7 @@ public class DoubleEarthL : BaseEarth {
 
 	public override string GetAbilityDescription()
 	{
-		string ad = "Deals" + LargeDamage() + "of earth damage to two enemies, and dazes them. "; 
+		string ad = "Deals" + LargeDamage() + "of Earth damage to two enemies, and dazes them. "; 
 		return ad;
 	}
 
