@@ -30,4 +30,9 @@ public class StunSmashH : BasePhysical {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
 }

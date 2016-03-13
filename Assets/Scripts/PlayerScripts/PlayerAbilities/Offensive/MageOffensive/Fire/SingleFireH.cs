@@ -30,4 +30,9 @@ public class SingleFireH : BaseFire {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
 }

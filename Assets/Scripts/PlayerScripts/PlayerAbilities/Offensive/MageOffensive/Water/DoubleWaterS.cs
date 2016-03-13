@@ -32,4 +32,9 @@ public class DoubleWaterS : BaseWater {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 2;
+	}
 }

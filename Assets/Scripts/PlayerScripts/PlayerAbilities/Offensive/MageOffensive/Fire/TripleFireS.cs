@@ -32,4 +32,9 @@ public class TripleFireS : BaseFire {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 3;
+	}
 }

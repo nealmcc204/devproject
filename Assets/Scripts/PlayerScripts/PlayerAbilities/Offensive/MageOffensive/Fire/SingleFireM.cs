@@ -28,4 +28,9 @@ public class SingleFireM : BaseFire {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
 }

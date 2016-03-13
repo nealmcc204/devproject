@@ -56,10 +56,10 @@ public class CombatMediator : MonoBehaviour {
 			units.Add (e);
 		}
 
-		CombatPhase ();
+		StartCoroutine(CombatPhase ());
 	}
 
-	private void CombatPhase()
+	IEnumerator CombatPhase()
 	{
 		while (!CombatComplete ()) {
 			SortUnitsBySpeed (units);
@@ -69,6 +69,9 @@ public class CombatMediator : MonoBehaviour {
 						u.SetTaunt (false);
 					}
 					u.DoMove (playerManager.Players, enemyManager.Enemies);
+					while (!u.GetTurnComplete ()) {
+						yield return null;
+					}
 				} else {
 					u.SetStatus (Status.NONE);
 				}

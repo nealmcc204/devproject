@@ -32,4 +32,9 @@ public class DoubleFireS : BaseFire {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 2;
+	}
 }

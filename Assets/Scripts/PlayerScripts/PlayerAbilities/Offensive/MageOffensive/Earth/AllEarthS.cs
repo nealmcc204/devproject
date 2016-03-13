@@ -31,4 +31,9 @@ public class AllEarthS : BaseEarth {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 6;
+	}
 }

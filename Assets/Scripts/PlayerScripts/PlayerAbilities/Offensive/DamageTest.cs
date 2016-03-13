@@ -30,4 +30,9 @@ public class DamageTest : OffensiveAbility {
 		string ad = "Deals" + damage + "of Fire damage to target. "; 
 		return ad;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
 }

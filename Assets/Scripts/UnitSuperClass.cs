@@ -11,6 +11,7 @@ public abstract class Unit : MonoBehaviour {
 	private bool dead;
 	private bool taunting;
 	private bool withstanding;
+	private bool turnComplete;
 	private float damageReduction;
 	private Shield shield;
 	private Status status;
@@ -167,5 +168,15 @@ public abstract class Unit : MonoBehaviour {
 	public void SetWithstanding(bool w)
 	{
 		withstanding = w;
+	}
+
+	public void SetTurnComplete(bool t)
+	{
+		turnComplete = t;
+	}
+
+	public bool GetTurnComplete()
+	{
+		return turnComplete;
 	}
 }

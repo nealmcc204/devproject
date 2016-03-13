@@ -27,4 +27,9 @@ public class DoubleWaterShield : DefensiveAbility {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 2;
+	}
 }

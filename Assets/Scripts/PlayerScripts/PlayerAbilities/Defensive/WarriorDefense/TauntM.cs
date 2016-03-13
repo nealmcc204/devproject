@@ -26,4 +26,9 @@ public class TauntM : DefensiveAbility {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
 }

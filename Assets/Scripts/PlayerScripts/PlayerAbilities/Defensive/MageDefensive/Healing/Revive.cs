@@ -33,4 +33,9 @@ public class Revive : DefensiveAbility {
 		return false;
 	}
 
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
+
 }

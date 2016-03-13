@@ -29,4 +29,9 @@ public class TripleStrikeL : BasePhysical {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 3;
+	}
 }

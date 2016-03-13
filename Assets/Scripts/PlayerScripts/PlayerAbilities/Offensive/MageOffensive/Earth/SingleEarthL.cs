@@ -30,4 +30,9 @@ public class SingleEarthL : BaseEarth {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
 }

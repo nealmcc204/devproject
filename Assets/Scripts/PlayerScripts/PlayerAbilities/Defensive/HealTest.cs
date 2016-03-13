@@ -28,4 +28,9 @@ public class HealTest : DefensiveAbility {
 		return false;
 	}
 
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
+
 }

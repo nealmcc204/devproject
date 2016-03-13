@@ -33,4 +33,8 @@ public class GreaterRevive : DefensiveAbility {
 		return false;
 	}
 
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
 }

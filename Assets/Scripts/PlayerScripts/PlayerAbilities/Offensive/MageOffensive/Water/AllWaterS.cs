@@ -32,4 +32,9 @@ public class AllWaterS : BaseWater {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 6;
+	}
 }

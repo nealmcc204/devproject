@@ -2,6 +2,8 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
+
 
 public class MagePlayer : Player 
 {
@@ -32,8 +34,10 @@ public class MagePlayer : Player
 	
 	}
 
-	public override void DoMove(List<Player> players, List<Enemy> enemies)
+	/*public void AbilitySelectClicked()
 	{
-		UseAbility (defensiveAbilities [0], players [0]);
-	}
+		string abilityName = gameObject.GetComponentInChildren<Text> ().text;
+		ChooseSelectedAbility (abilityName);
+	}*/
+				
 }

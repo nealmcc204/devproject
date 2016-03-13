@@ -26,5 +26,8 @@ public class SingleFireShield : DefensiveAbility {
 		return false;
 	}
 
-
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
 }

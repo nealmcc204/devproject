@@ -7,4 +7,6 @@ public abstract class BaseAbility {
 
 	public abstract string GetAbilityDescription();
 
+	public abstract int GetNumTargets ();
+
 }

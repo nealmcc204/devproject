@@ -33,4 +33,9 @@ public class WeakRevive : DefensiveAbility {
 		return false;
 	}
 
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
+
 }

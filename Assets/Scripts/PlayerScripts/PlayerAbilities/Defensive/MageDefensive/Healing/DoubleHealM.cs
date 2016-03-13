@@ -29,4 +29,9 @@ public class DoubleHealM : DefensiveAbility {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 2;
+	}
 }

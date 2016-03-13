@@ -32,4 +32,9 @@ public class TripleEarthM : BaseEarth {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 3;
+	}
 }

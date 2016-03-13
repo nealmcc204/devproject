@@ -29,4 +29,9 @@ public class DoubleStrikeL : BasePhysical {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 2;
+	}
 }

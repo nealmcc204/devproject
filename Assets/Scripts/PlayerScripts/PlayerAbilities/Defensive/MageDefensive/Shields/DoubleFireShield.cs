@@ -27,4 +27,9 @@ public class DoubleFireShield : DefensiveAbility {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 2;
+	}
 }

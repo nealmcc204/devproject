@@ -34,7 +34,7 @@ public class WarriorPlayer : Player
 
 	public override void DoMove(List<Player> players, List<Enemy> enemies)
 	{
-		UseAbility (offensiveAbilities [0], enemies [0]);
+		//UseAbility (offensiveAbilities [0], enemies [0]);
 	}
 
 	public override bool ReduceHealth(int damage, Shield s, ElementType ae)

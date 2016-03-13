@@ -30,4 +30,9 @@ public class SingleWaterL : BaseWater {
 	{
 		return false;
 	}
+
+	public override int GetNumTargets()
+	{
+		return 1;
+	}
 }
