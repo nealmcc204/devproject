@@ -120,6 +120,9 @@ public abstract class Unit : MonoBehaviour {
 
 	public void SetDead(bool d)
 	{
+		if (GetTaunting ())
+			SetTaunt (false);
+		
 		dead = d;
 	}
 

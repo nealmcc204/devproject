@@ -64,10 +64,12 @@ public class CombatMediator : MonoBehaviour {
 		while (!CombatComplete ()) {
 			SortUnitsBySpeed (units);
 			foreach (Unit u in units) {
+				u.SetTurnComplete (false);
+				if (u.GetTaunting ()) {
+					u.SetTaunt (false);
+				}
 				if (!u.GetDead () && u.GetStatus() != Status.STUNNED) {
-					if (u.GetTaunting ()) {
-						u.SetTaunt (false);
-					}
+
 					u.DoMove (playerManager.Players, enemyManager.Enemies);
 					while (!u.GetTurnComplete ()) {
 						yield return null;

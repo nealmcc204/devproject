@@ -192,6 +192,7 @@ public abstract class Player : Unit {
 		}
 		ResetSelectedAbilities ();
 		ResetSelectedTargets ();
+		SetTurnComplete (true);
 	}
 
 	public void CreateTurnAbilityButtons()
