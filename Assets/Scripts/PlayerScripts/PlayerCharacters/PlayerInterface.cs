@@ -14,6 +14,7 @@ public abstract class Player : Unit {
 	private DefensiveAbility selectedDefensiveAbility;
 	private BaseAbility selectedAbility;
 	public GameObject buttonPrefab;
+	public Canvas canvas;
 	private List<GameObject> buttons = new List<GameObject> ();
 
     public void AddOffensiveAbility(OffensiveAbility oa)
@@ -203,6 +204,7 @@ public abstract class Player : Unit {
 			button = (GameObject)Instantiate (buttonPrefab, new Vector3(0,0,0), Quaternion.identity);
 			button.GetComponentInChildren<Text> ().text = oa.GetAbilityTag ();
 			button.GetComponentInChildren<Button> ().onClick.AddListener(() => SetSelectedOffensiveAbility (oa));
+			button.transform.SetParent (canvas.transform);
 			buttons.Add (button);
 		}
 
@@ -210,6 +212,7 @@ public abstract class Player : Unit {
 			button = (GameObject)Instantiate (buttonPrefab, new Vector3(0,0,0), Quaternion.identity);
 			button.GetComponentInChildren<Text> ().text = da.GetAbilityTag ();
 			button.GetComponentInChildren<Button> ().onClick.AddListener(() => SetSelectedDefensiveAbility (da));
+			button.transform.SetParent (canvas.transform);
 			buttons.Add (button);
 		}
 	}
@@ -221,6 +224,7 @@ public abstract class Player : Unit {
 			button = (GameObject)Instantiate (buttonPrefab, new Vector3 (0, 0, 0), Quaternion.identity);
 			button.GetComponentInChildren<Text> ().text = t.name;
 			button.GetComponentInChildren<Button> ().onClick.AddListener (() => AddToSelectedEnemyTargets (t));
+			button.transform.SetParent (canvas.transform);
 			buttons.Add (button);
 		}
 	}
@@ -232,6 +236,7 @@ public abstract class Player : Unit {
 			button = (GameObject)Instantiate (buttonPrefab, new Vector3 (0, 0, 0), Quaternion.identity);
 			button.GetComponentInChildren<Text> ().text = t.name;
 			button.GetComponentInChildren<Button> ().onClick.AddListener (() => AddToSelectedFriendlyTargets (t));
+			button.transform.SetParent (canvas.transform);
 			buttons.Add (button);
 		}
 	}
