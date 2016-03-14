@@ -44,7 +44,7 @@ public abstract class Unit : MonoBehaviour {
 	{
 		if (!GetDead ()) {
 			if (GetStatus () == Status.BURNED) {
-				h = h / 2;
+				h =(int) h / 2;
 				SetStatus (Status.NONE);
 			}
 			if (health == maxHealth) {

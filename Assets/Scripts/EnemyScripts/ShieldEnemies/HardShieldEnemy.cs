@@ -6,7 +6,7 @@ using System.Collections.Generic;
 class HardShieldEnemy : ShieldEnemy
 {
 
-    void Start()
+    void Awake()
     {
         SetMaxHealth(150);
         SetHealth(GetMaxHealth());

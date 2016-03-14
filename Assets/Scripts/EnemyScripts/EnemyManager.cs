@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour {
     // Use this for initialization
 	public List<Enemy> Enemies = new List<Enemy>();
 
-    void Start () {
+    void Awake () {
         int health =  Enemies[0].GetCurrentHealth();
         health = Enemies[1].GetCurrentHealth();
 	}

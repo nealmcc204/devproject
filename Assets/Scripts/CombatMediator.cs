@@ -72,7 +72,7 @@ public class CombatMediator : MonoBehaviour {
 
 					u.DoMove (playerManager.Players, enemyManager.Enemies);
 					while (!u.GetTurnComplete ()) {
-						yield return null;
+						yield return new WaitForSeconds(0.05f);
 					}
 				} else {
 					u.SetStatus (Status.NONE);

@@ -8,7 +8,7 @@ public class DoubleStrikeS : BasePhysical {
 	{
 		bool success = false;
 		foreach (Enemy e in targets) {
-			success = e.ReduceHealth (MediumDamage (), e.GetShield (), AttackElement ());
+			success = e.ReduceHealth (SmallDamage (), e.GetShield (), AttackElement ());
 		}
 		return success;
 	}

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 class EasyTankEnemy : TankEnemy
 {
 
-    void Start()
+    void Awake()
     {
         SetMaxHealth(150);
         SetHealth(GetMaxHealth());
@@ -18,12 +18,14 @@ class EasyTankEnemy : TankEnemy
     {
 		Player target = FindLowestPercentageHealth (players);
 		PrimaryMove (target);
+		SetTurnComplete (true);
     }
 
 	private void PrimaryMove(Player target)
     {
 		target.ReduceHealth (10, target.GetShield(), ElementType.NONE);
-		Console.WriteLine (tag, "Damaged ", target.tag, "for 10");
+		string log = "Damaged" +target.gameObject.name + " for 10";
+		Debug.Log (log);
     }
 
     private void SpecialMove()

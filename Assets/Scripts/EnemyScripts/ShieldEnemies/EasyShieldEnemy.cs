@@ -7,7 +7,7 @@ class EasyShieldEnemy : ShieldEnemy
 {
 	public ElementType element; 
 
-    void Start()
+    void Awake()
     {
         SetMaxHealth(100);
         SetHealth(GetMaxHealth());
@@ -27,12 +27,14 @@ class EasyShieldEnemy : ShieldEnemy
 			Enemy target = FindLowestPercentageHealth (targets);
 			PrimaryMove (target);
 		}
+		SetTurnComplete (true);
     }
 
 	private void PrimaryMove(Enemy target)
     {
 		target.SetShield (element);
-		Console.WriteLine ("Shielded ", target.tag);
+		string log = "Shielded" +target.gameObject.name;
+		Debug.Log (log);
     }
 
     private void SpecialMove()

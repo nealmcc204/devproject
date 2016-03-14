@@ -6,7 +6,7 @@ using System.Collections.Generic;
 class EasyHealerEnemy : HealerEnemy
 {
 
-    void Start()
+    void Awake()
     {
         SetMaxHealth(75);
         SetHealth(GetMaxHealth());
@@ -18,6 +18,7 @@ class EasyHealerEnemy : HealerEnemy
     {
 		Enemy target = FindLowestPercentageHealth (enemies);
 		PrimaryMove (target);
+		SetTurnComplete (true);
     }
 
 	private void PrimaryMove(Enemy target)
@@ -25,7 +26,8 @@ class EasyHealerEnemy : HealerEnemy
 		//Medium difficulty will heal multiple targets.
 		int heal = target.GetMaxHealth()/5;
 		target.RestoreHealth(heal);
-		Console.WriteLine ("Healed", target.tag," for:", heal);
+		string log = "Healed" +target.gameObject.name + " for" + heal;
+		Debug.Log (log);
 
     }
 

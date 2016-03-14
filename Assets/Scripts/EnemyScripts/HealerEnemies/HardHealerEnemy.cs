@@ -6,7 +6,7 @@ using System.Collections.Generic;
 class HardHealerEnemy : HealerEnemy
 {
 
-    void Start()
+    void Awake()
     {
         SetMaxHealth(125);
         SetHealth(GetMaxHealth());

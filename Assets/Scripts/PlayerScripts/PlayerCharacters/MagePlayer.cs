@@ -13,20 +13,21 @@ public class MagePlayer : Player
 		if (!mp) {
 			mp = this;
 			DontDestroyOnLoad (gameObject);
+			SetMaxHealth(75);
+			SetHealth(GetMaxHealth());
+			SetSpeed(100);
+			AddOffensiveAbility(new SingleFireS());
+			AddOffensiveAbility (new SingleEarthS());
+			AddOffensiveAbility (new SingleWaterS());
+			AddDefensiveAbility (new SingleHealS());
+			SetShield (ElementType.NONE);
 		} else {
 			Destroy (gameObject);
 		}
 	}
     // Use this for initialization
     void Start () {
-        SetMaxHealth(75);
-        SetHealth(GetMaxHealth());
-        SetSpeed(100);
-		AddOffensiveAbility(new SingleFireS());
-		AddOffensiveAbility (new SingleEarthS());
-		AddOffensiveAbility (new SingleWaterS());
-		AddDefensiveAbility (new SingleHealS());
-		SetShield (ElementType.NONE);
+       
 	}
 	
 	// Update is called once per frame

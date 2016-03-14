@@ -11,6 +11,12 @@ public class WarriorPlayer : Player
 		if (!wp) {
 			wp = this;
 			DontDestroyOnLoad (gameObject);
+			SetMaxHealth(100);
+			SetHealth(GetMaxHealth());
+			SetSpeed(75);
+			AddOffensiveAbility (new StunSmashS());
+			AddOffensiveAbility (new DoubleStrikeS ());
+			SetShield (ElementType.NONE);
 		} else {
 			Destroy (gameObject);
 		}
@@ -18,12 +24,7 @@ public class WarriorPlayer : Player
     // Use this for initialization
     void Start()
     {
-        SetMaxHealth(100);
-        SetHealth(GetMaxHealth());
-	    SetSpeed(75);
-		AddOffensiveAbility (new StunSmashS());
-		AddOffensiveAbility (new DoubleStrikeS ());
-		SetShield (ElementType.NONE);
+
     }
 
     // Update is called once per frame
@@ -31,11 +32,6 @@ public class WarriorPlayer : Player
     {
 
     }
-
-	public override void DoMove(List<Player> players, List<Enemy> enemies)
-	{
-		//UseAbility (offensiveAbilities [0], enemies [0]);
-	}
 
 	public override bool ReduceHealth(int damage, Shield s, ElementType ae)
 	{

@@ -10,7 +10,7 @@ class MediumDamageEnemy : DamageEnemy
 	static int maxCooldown;
 	ElementType element;
 
-    void Start()
+    void Awake()
     {
         SetMaxHealth(100);
         SetHealth(GetMaxHealth());
@@ -44,9 +44,10 @@ class MediumDamageEnemy : DamageEnemy
 		bool success = false;
 		success = target.ReduceHealth (damage, target.GetShield(), element);
 		if (success) {
-			Console.WriteLine ("Damaged", target.tag, "for", damage);
+			string log = "Damaged" +target.gameObject.name + " for" + damage;
+			Debug.Log (log);
 		} else {
-			Console.WriteLine ("Attack Blocked.");
+			Debug.Log ("Attack Blocked.");
 		}
     }
 

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 class MediumTankEnemy : TankEnemy
 {
 
-    void Start()
+    void Awake()
     {
         SetMaxHealth(200);
         SetHealth(GetMaxHealth());

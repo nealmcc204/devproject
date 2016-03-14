@@ -7,7 +7,7 @@ class EasyDamageEnemy : DamageEnemy {
 
 	int damage;
 
-    void Start()
+    void Awake()
     {
         SetMaxHealth(75);
         SetHealth(GetMaxHealth());
@@ -29,6 +29,7 @@ class EasyDamageEnemy : DamageEnemy {
 		} else {
 			PrimaryMove (target);
 		}
+		SetTurnComplete (true);
     }
 
 	private void PrimaryMove(Player target)
@@ -36,9 +37,10 @@ class EasyDamageEnemy : DamageEnemy {
 		bool success = false;
 		success = target.ReduceHealth (damage, target.GetShield(), ElementType.FIRE);
 		if (success) {
-			Console.WriteLine ("Damaged", target.tag, "for", damage);
+			string log = "Damaged" +target.gameObject.name + " for" + damage;
+			Debug.Log (log);
 		} else {
-			Console.WriteLine ("Attack Blocked.");
+			Debug.Log ("Attack Blocked.");
 		}
     }
 

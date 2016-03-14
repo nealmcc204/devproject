@@ -17,11 +17,13 @@ using System;
 			
 		float targetPercentageHp = 2;
 		foreach (Player u in units) {
-			float nextPercentageHp = (float)u.GetCurrentHealth () / (float)u.GetMaxHealth ();
-			if (nextPercentageHp < targetPercentageHp) {
-				target = u;
+			if (!u.GetDead ()) {
+				float nextPercentageHp = (float)u.GetCurrentHealth () / (float)u.GetMaxHealth ();
+				if (nextPercentageHp < targetPercentageHp) {
+					target = u;
+				}
+				targetPercentageHp = (float)target.GetCurrentHealth () / (float)target.GetMaxHealth ();
 			}
-			targetPercentageHp = (float)target.GetCurrentHealth () / (float)target.GetMaxHealth ();
 		}
 		return target;
 	}
