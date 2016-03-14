@@ -8,13 +8,29 @@ public class SceneNavigator : MonoBehaviour {
 	public static SceneNavigator sn;
 	int currentLevelNum;
 
-	void Awake() {//Mage Player Singleton
-		if (!sn) {
-			sn = this;
-			DontDestroyOnLoad (gameObject);
+	public static SceneNavigator Instance {
+		get {
+			if (sn == null) {
+				sn = FindObjectOfType<SceneNavigator> ();
+				if (sn == null) {
+					GameObject obj = new GameObject ();
+					obj.hideFlags = HideFlags.HideAndDontSave;
+					sn = obj.AddComponent<SceneNavigator> ();
+				}
+			}
+			return sn;
+		}
+	}
+
+	void Awake(){
+
+		DontDestroyOnLoad (this.gameObject);
+		if (sn == null) {
+			sn = this as SceneNavigator;
 		} else {
 			Destroy (gameObject);
 		}
+
 	}
 
 	void Start () {
@@ -38,7 +54,8 @@ public class SceneNavigator : MonoBehaviour {
 
 	public void GoToLevel1()
 	{
-		SceneManager.LoadScene ("Level1");
+		//SceneManager.LoadScene ("Level1");
+		SceneManager.LoadScene("CombatScene");
 	}
 
 	public void GoToLevel2()
@@ -64,6 +81,14 @@ public class SceneNavigator : MonoBehaviour {
 	public void GoToLevel6()
 	{
 		SceneManager.LoadScene ("Level6");
+	}
+
+	public void GoToLevelUp()
+	{
+		if (currentLevelNum < 3)
+			GoToMageFireAbilities ();
+		else
+			GoToMageHealingAbilities ();
 	}
 
 	public void GoToMageFireAbilities()
@@ -122,5 +147,10 @@ public class SceneNavigator : MonoBehaviour {
 	public void GoToPreScreen()
 	{
 		SceneManager.LoadScene ("PreScreen");
+	}
+
+	public void CloseGame()
+	{
+		Application.Quit ();
 	}
 }

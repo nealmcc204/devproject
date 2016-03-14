@@ -41,6 +41,7 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 		mp.AddDefensiveAbility (new TauntS ());
 		buttons [0].interactable = false;
 		buttons [1].interactable = true;
+		Advance ();
 	}
 
 	public void AddTauntM()
@@ -49,6 +50,7 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 		mp.AddDefensiveAbility (new TauntM());
 		buttons [1].interactable = false;
 		buttons [2].interactable = true;
+		Advance ();
 	}
 
 	public void AddTauntL()
@@ -56,24 +58,28 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 		mp.RemoveDefensiveAbility (new TauntM());
 		mp.AddDefensiveAbility (new TauntL());
 		buttons [2].interactable = false;
+		Advance ();
 	}
 
 	public void AddWeakRevive()
 	{
 		mp.AddDefensiveAbility (new WeakRevive ());
 		buttons [3].interactable = false;
+		Advance ();
 	}
 
 	public void AddWeakHeal()
 	{
 		mp.AddDefensiveAbility (new WeakHeal ());
 		buttons [4].interactable = false;
+		Advance ();
 	}
 		
 	public void AddWithstand()
 	{
 		mp.AddDefensiveAbility (new Withstand());
 		buttons [5].interactable = false;
+		Advance ();
 	}
 
 	public void Advance()

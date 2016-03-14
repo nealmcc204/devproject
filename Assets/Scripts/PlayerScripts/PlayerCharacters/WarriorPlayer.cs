@@ -7,20 +7,38 @@ public class WarriorPlayer : Player
 {
 	public static WarriorPlayer wp;
 
-	void Awake() {//Warrior Player Singleton
-		if (!wp) {
-			wp = this;
-			DontDestroyOnLoad (gameObject);
+	public static WarriorPlayer Instance {//this and awake make warrior a singleton
+		get {
+			if (wp == null) {
+				wp = FindObjectOfType<WarriorPlayer> ();
+				if (wp == null) {
+					GameObject obj = new GameObject ();
+					obj.hideFlags = HideFlags.HideAndDontSave;
+					wp = obj.AddComponent<WarriorPlayer> ();
+				}
+			}
+			return wp;
+		}
+	}
+
+	void Awake(){
+
+		DontDestroyOnLoad (this.gameObject);
+		if (wp == null) {
+			wp = this as WarriorPlayer;
 			SetMaxHealth(100);
 			SetHealth(GetMaxHealth());
 			SetSpeed(75);
 			AddOffensiveAbility (new StunSmashS());
 			AddOffensiveAbility (new DoubleStrikeS ());
 			SetShield (ElementType.NONE);
+			SetShield (ElementType.NONE);
 		} else {
 			Destroy (gameObject);
 		}
+
 	}
+
     // Use this for initialization
     void Start()
     {
@@ -35,8 +53,10 @@ public class WarriorPlayer : Player
 
 	public override bool ReduceHealth(int damage, Shield s, ElementType ae)
 	{
-		if (GetTaunting())
-			damage = (int) (damage * GetDamageReduction ());
+		if (GetTaunting ()) {
+			damage = (int)(damage * GetDamageReduction ());
+			Debug.Log ("Warrior took reduced damage.");
+		}
 
 		if (s.GetShieldType() == ElementType.NONE || s.GetShieldType() != ae) {
 			SetHealth(GetCurrentHealth() - damage);

@@ -14,10 +14,8 @@ public abstract class Player : Unit {
 	private DefensiveAbility selectedDefensiveAbility;
 	private BaseAbility selectedAbility;
 	public GameObject buttonPrefab;
-	public Canvas canvas;
+	private Canvas canvas;
 	private List<GameObject> buttons = new List<GameObject> ();
-
-    
 
 	public override void DoMove(List<Player> players, List<Enemy> enemies)
 	{
@@ -32,6 +30,7 @@ public abstract class Player : Unit {
 	{
 		//UseAbility (defensiveAbilities [0], players [0]);
 		int numTargets;
+		canvas = GetComponentInChildren<Canvas>();
 		CreateTurnAbilityButtons();
 		while (GetSelectedOffensiveAbility () == null && GetSelectedDefensiveAbility() == null) {
 			yield return null;
@@ -102,13 +101,19 @@ public abstract class Player : Unit {
 	public void CreateEnemyTargetButtons(List<Enemy> targets)
 	{
 		int x = 100; int y = 50; int count = 0;
+		List<Enemy> taunters = GetTauntingEnemies (targets);
+
+		if (taunters.Count > 0) {//replaces the targets with the taunting enemies
+			targets.Clear ();
+			targets.AddRange(taunters);
+		}
 
 		foreach (Enemy t in targets) {
 			if (!t.GetDead()) {
 			GameObject button = new GameObject ();
 			Enemy captured = t;
 			buttons.Add (button);
-			buttons[count] = (GameObject)Instantiate (buttonPrefab, new Vector3 (x, y*count, 0), Quaternion.identity);
+			buttons[count] = (GameObject)Instantiate (buttonPrefab, new Vector3 (x, 50+ y*count, 0), Quaternion.identity);
 			buttons[count].GetComponentInChildren<Text> ().text = t.name;
 			buttons[count].GetComponentInChildren<Button> ().onClick.AddListener (() => AddToSelectedEnemyTargets (captured));
 			buttons[count].transform.SetParent (canvas.transform);
@@ -125,7 +130,7 @@ public abstract class Player : Unit {
 			GameObject button = new GameObject ();
 			Player captured = t;
 			buttons.Add (button);
-			buttons[count] = (GameObject)Instantiate (buttonPrefab, new Vector3 (x, y*count, 0), Quaternion.identity);
+			buttons[count] = (GameObject)Instantiate (buttonPrefab, new Vector3 (x,50 + y*count, 0), Quaternion.identity);
 			buttons[count].GetComponentInChildren<Text> ().text = t.name;
 			buttons[count].GetComponentInChildren<Button> ().onClick.AddListener (() => AddToSelectedFriendlyTargets (captured));
 			buttons[count].transform.SetParent (canvas.transform);
@@ -298,5 +303,15 @@ public abstract class Player : Unit {
 	{
 		selectedEnemyTargets.Clear ();
 		selectedFriendlyTargets.Clear ();
+	}
+
+	public List<Enemy> GetTauntingEnemies(List<Enemy> enemies)
+	{
+		List<Enemy> taunters = new List<Enemy> ();
+		foreach (Enemy e in enemies) {
+			if (e.GetTaunting ())
+				taunters.Add (e);
+		}
+		return taunters;
 	}
 }

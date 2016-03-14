@@ -9,7 +9,40 @@ public class MagePlayer : Player
 {
 	public static MagePlayer mp;
 
-	void Awake() {//Mage Player Singleton
+	public static MagePlayer Instance {
+		get {
+			if (mp == null) {
+				mp = FindObjectOfType<MagePlayer> ();
+				if (mp == null) {
+					GameObject obj = new GameObject ();
+					obj.hideFlags = HideFlags.HideAndDontSave;
+					mp = obj.AddComponent<MagePlayer> ();
+				}
+			}
+			return mp;
+		}
+	}
+
+	void Awake(){
+		
+		DontDestroyOnLoad (this.gameObject);
+		if (mp == null) {
+			mp = this as MagePlayer;
+			SetMaxHealth(75);
+			SetHealth(GetMaxHealth());
+			SetSpeed(100);
+			AddOffensiveAbility(new SingleFireS());
+			AddOffensiveAbility (new SingleEarthS());
+			AddOffensiveAbility (new SingleWaterS());
+			AddDefensiveAbility (new SingleHealS());
+			SetShield (ElementType.NONE);
+		} else {
+			Destroy (gameObject);
+		}
+			
+	}
+
+	/*void Awake() {
 		if (!mp) {
 			mp = this;
 			DontDestroyOnLoad (gameObject);
@@ -24,7 +57,7 @@ public class MagePlayer : Player
 		} else {
 			Destroy (gameObject);
 		}
-	}
+	}*/
     // Use this for initialization
     void Start () {
        

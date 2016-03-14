@@ -2,15 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FireButtonManager : MonoBehaviour {
 
 	// Use this for initialization
 	public static FireButtonManager fbm;
 	public SceneNavigator sceneNavigator;
+	public GameObject magePrefab;
+	private GameObject character;
 
 	public List<Button> buttons = new List<Button>();
-	public MagePlayer mp;
+	private MagePlayer mp;
 
 	void Awake() {//Mage Player Singleton
 		if (!fbm) {
@@ -22,6 +25,8 @@ public class FireButtonManager : MonoBehaviour {
 	}
 
 	void Start () {
+		character = (GameObject)Instantiate (magePrefab, new Vector3 (0, 0, 0), Quaternion.identity);
+		mp = character.GetComponentInChildren<MagePlayer> ();
 		foreach (Button b in buttons)
 			b.interactable = false;
 
@@ -148,6 +153,7 @@ public class FireButtonManager : MonoBehaviour {
 
 	public void Advance()
 	{
-		sceneNavigator.GoToMageWaterAbilities();
+		SceneManager.LoadScene ("CombatScene");
+		//sceneNavigator.GoToMageWaterAbilities();
 	}
 }

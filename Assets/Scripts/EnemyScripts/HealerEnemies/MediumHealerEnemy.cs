@@ -16,12 +16,25 @@ class MediumHealerEnemy : HealerEnemy
 
 	public override void DoMove(List<Player> players, List<Enemy> enemies)
     {
-        throw new NotImplementedException();
+		List<Enemy> temp = enemies;
+		Enemy tempEnemy;
+		Enemy target = FindLowestPercentageHealth (temp);
+		PrimaryMove (target);
+		tempEnemy = target;
+		temp.Remove (target);
+		target = FindLowestPercentageHealth (temp); //heals 2 different enemies;
+		PrimaryMove (target);
+		temp.Add (tempEnemy);
+
+		SetTurnComplete (true);
     }
 
-    private void PrimaryMove()
+	private void PrimaryMove(Enemy target)
     {
-        throw new NotImplementedException();
+		int heal = (int)(target.GetMaxHealth()/3);
+		target.RestoreHealth(heal);
+		string log = "Healed" +target.gameObject.name + " for" + heal;
+		Debug.Log (log);
     }
 
     private void SpecialMove()

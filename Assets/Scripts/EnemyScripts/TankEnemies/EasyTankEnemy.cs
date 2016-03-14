@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 class EasyTankEnemy : TankEnemy
 {
+	int damage;
 
     void Awake()
     {
@@ -12,19 +13,29 @@ class EasyTankEnemy : TankEnemy
         SetHealth(GetMaxHealth());
         SetSpeed(30);
 		SetShield (ElementType.NONE);
+		damage = 15;
     }
 
 	public override void DoMove(List<Player> players, List<Enemy> enemies)
     {
-		Player target = FindLowestPercentageHealth (players);
-		PrimaryMove (target);
+		Player target = GetTaunter (players);
+
+		if(target == null)
+			target = FindLowestPercentageHealth (players);
+
+		if (GetStatus () == Status.DAZED) {
+			PrimaryMove (target);
+			SetStatus (Status.NONE);
+		} else {
+			PrimaryMove (target);
+		}
 		SetTurnComplete (true);
     }
 
 	private void PrimaryMove(Player target)
     {
-		target.ReduceHealth (10, target.GetShield(), ElementType.NONE);
-		string log = "Damaged" +target.gameObject.name + " for 10";
+		target.ReduceHealth (damage, target.GetShield(), ElementType.NONE);
+		string log = "Damaged" +target.gameObject.name + " for" + damage;
 		Debug.Log (log);
     }
 

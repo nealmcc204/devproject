@@ -18,25 +18,33 @@ class HardDamageEnemy : DamageEnemy
 		SetShield (ElementType.NONE);
 		damage = 60;
 		maxCooldown = 2;
-		cooldown = maxCooldown;
+		cooldown = 0;
 		element = ElementType.FIRE;
 	}
-
+		
 	public override void DoMove(List<Player> players, List<Enemy> enemies)
 	{
-		Player target = FindLowestPercentageHealth (players);
-		if (GetStatus () == Status.DAZED) {
-			PrimaryMove (target);
-			SetStatus (Status.NONE);
-		} else {
-			if (cooldown == 0) {
-				SpecialMove (players);
-				cooldown = maxCooldown;
-			} else {
+		Player target = GetTaunter (players);
+
+		if (target == null) {
+			target = FindLowestPercentageHealth (players);
+			if (GetStatus () == Status.DAZED) {
 				PrimaryMove (target);
-				cooldown--;
+				SetStatus (Status.NONE);
+			} else {
+				if (cooldown <= 0) {
+					SpecialMove (players);
+					cooldown = maxCooldown;
+				} else {
+					PrimaryMove (target);
+					cooldown--;
+				}
 			}
+		} else {
+			PrimaryMove (target);
+			cooldown--;
 		}
+		SetTurnComplete (true);
 	}
 
 	public void PrimaryMove(Player target)

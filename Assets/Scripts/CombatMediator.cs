@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CombatMediator : MonoBehaviour {
 
@@ -10,9 +11,14 @@ public class CombatMediator : MonoBehaviour {
     public EnemyManager enemyManager;
 	public SceneNavigator sceneNavigator;
 	private List<Unit> units;
+	public GameObject buttonPrefab;
+	private GameObject startButton;
 
 	void Start () {
-
+		startButton = (GameObject)Instantiate (buttonPrefab,gameObject.transform.position, Quaternion.identity);
+		startButton.GetComponentInChildren<Text> ().text = "Start Fight.";
+		startButton.GetComponentInChildren<Button> ().onClick.AddListener (() => StartGame ());
+		startButton.transform.SetParent (gameObject.GetComponentInParent<Canvas> ().transform);
 	}
 	
 	// Update is called once per frame
@@ -49,6 +55,7 @@ public class CombatMediator : MonoBehaviour {
 
 	public void StartGame()
 	{
+		startButton.GetComponentInChildren<Button> ().interactable = false;
 		units = new List<Unit> ();
 		foreach (Player p in playerManager.Players) {
 			units.Add (p);
