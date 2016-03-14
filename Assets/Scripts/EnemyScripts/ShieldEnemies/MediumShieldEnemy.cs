@@ -42,11 +42,14 @@ class MediumShieldEnemy : ShieldEnemy
 	private void SpecialMove(List<Enemy> enemies)
     {
 		List<Enemy> temp = enemies;
+		Enemy tempEnemy;
 		Enemy target = FindLowestPercentageHealth (temp);
+		tempEnemy = target;
 		PrimaryMove (target);
 		temp.Remove (target);
 		target = FindLowestPercentageHealth (temp); //heals 2 different enemies;
 		PrimaryMove (target);
+		temp.Add(tempEnemy);
     }
 
     // Update is called once per frame

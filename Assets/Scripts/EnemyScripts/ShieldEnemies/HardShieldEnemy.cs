@@ -41,14 +41,17 @@ class HardShieldEnemy : ShieldEnemy
 
 	private void SpecialMove(List<Enemy> enemies)
 	{
-		List<Enemy> temp = enemies;//Shields 2 wweakest enemies with random types of shield
-		element = RandomNewElement ();
+		List<Enemy> temp = enemies;
+		Enemy tempEnemy;
 		Enemy target = FindLowestPercentageHealth (temp);
+		tempEnemy = target;
+		element = RandomNewElement ();
 		PrimaryMove (target);
 		temp.Remove (target);
 		target = FindLowestPercentageHealth (temp); //heals 2 different enemies;
 		element = RandomNewElement();
 		PrimaryMove (target);
+		temp.Add(tempEnemy);
 	}
 
 	// Update is called once per frame

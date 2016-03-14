@@ -102,6 +102,8 @@ public abstract class Player : Unit {
 	{
 		int x = 100; int y = 50; int count = 0;
 		List<Enemy> taunters = GetTauntingEnemies (targets);
+		List<Enemy> temp = new List<Enemy> ();
+		temp.AddRange(targets);
 
 		if (taunters.Count > 0) {//replaces the targets with the taunting enemies
 			targets.Clear ();
@@ -120,6 +122,9 @@ public abstract class Player : Unit {
 			count++;
 			}
 		}
+
+		targets.Clear ();
+		targets.AddRange(temp);
 	}
 
 	public void CreatePlayerTargetButtons(List<Player> targets)

@@ -22,11 +22,14 @@ class HardHealerEnemy : HealerEnemy
 	{
 		if (GetStatus () == Status.DAZED || cooldown > 0 || !CheckForDeadAllies(enemies)){
 			List<Enemy> temp = enemies;
+			Enemy tempEnemy;
 			Enemy target = FindLowestPercentageHealth (temp);
+			tempEnemy = target;
 			PrimaryMove (target);
 			temp.Remove (target);
 			target = FindLowestPercentageHealth (temp); //heals 2 different enemies;
 			PrimaryMove (target);
+			temp.Add(tempEnemy);
 			cooldown--;
 		} else {
 			foreach (Enemy e in enemies) {
