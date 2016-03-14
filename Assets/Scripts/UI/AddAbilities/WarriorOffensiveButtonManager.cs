@@ -7,6 +7,7 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 
 	// Use this for initialization
 	public static WarriorOffensiveButtonManager wobm;
+	public SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
 	public WarriorPlayer mp;
@@ -39,6 +40,7 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new DoubleStrikeM ());
 		buttons [0].interactable = false;
 		buttons [1].interactable = true;
+		Advance ();
 	}
 
 	public void AddDoubleStrikeL()
@@ -47,6 +49,7 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new DoubleStrikeL());
 		buttons [1].interactable = false;
 		buttons [2].interactable = true;
+		Advance ();
 	}
 
 	public void AddTripleStrikeL()
@@ -54,6 +57,7 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 		mp.RemoveOffensiveAbility (new DoubleStrikeL());
 		mp.AddOffensiveAbility (new TripleStrikeL());
 		buttons [2].interactable = false;
+		Advance ();
 	}
 
 	public void AddStunSmashM()
@@ -62,6 +66,7 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new StunSmashM ());
 		buttons [3].interactable = false;
 		buttons [4].interactable = true;
+		Advance ();
 	}
 
 	public void AddStunSmashL()
@@ -70,6 +75,7 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new StunSmashL ());
 		buttons [4].interactable = false;
 		buttons [5].interactable = true;
+		Advance ();
 	}
 
 	public void AddStunSmashH()
@@ -77,6 +83,12 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 		mp.RemoveOffensiveAbility (new StunSmashL());
 		mp.AddOffensiveAbility (new StunSmashH());
 		buttons [5].interactable = false;
+		Advance ();
+	}
+
+	public void Advance()
+	{
+		sceneNavigator.GoToWarriorDefensiveAbilities ();
 	}
 
 }

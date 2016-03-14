@@ -7,6 +7,7 @@ public class FireButtonManager : MonoBehaviour {
 
 	// Use this for initialization
 	public static FireButtonManager fbm;
+	public SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
 	public MagePlayer mp;
@@ -36,6 +37,7 @@ public class FireButtonManager : MonoBehaviour {
 	public void AddSingleFireS()
 	{
 		mp.AddOffensiveAbility (new SingleFireS ());
+		Advance ();
 	}
 
 	public void AddSingleFireM()
@@ -47,6 +49,7 @@ public class FireButtonManager : MonoBehaviour {
 
 		buttons [3].interactable = true;
 		buttons [4].interactable = true;
+		Advance ();
 	}
 
 	public void AddSingleFireL()
@@ -58,6 +61,7 @@ public class FireButtonManager : MonoBehaviour {
 
 		buttons [7].interactable = true;
 		buttons [8].interactable = true;
+		Advance ();
 	}
 
 	public void AddSingleFireH()
@@ -66,6 +70,8 @@ public class FireButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new SingleFireH ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+
+		Advance ();
 	}
 
 	public void AddDoubleFireS()
@@ -77,6 +83,7 @@ public class FireButtonManager : MonoBehaviour {
 
 		buttons [2].interactable = true;
 		buttons [3].interactable = true;
+		Advance ();
 	}
 
 	public void AddDoubleFireM()
@@ -92,6 +99,7 @@ public class FireButtonManager : MonoBehaviour {
 
 		buttons [6].interactable = true;
 		buttons [7].interactable = true;
+		Advance ();
 	}
 
 	public void AddDoubleFireL()
@@ -101,6 +109,8 @@ public class FireButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new DoubleFireL ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+
+		Advance ();
 	}
 
 	public void AddTripleFireS()
@@ -112,6 +122,7 @@ public class FireButtonManager : MonoBehaviour {
 
 		buttons [5].interactable = true;
 		buttons [6].interactable = true;
+		Advance ();
 	}
 
 	public void AddTripleFireM()
@@ -121,6 +132,8 @@ public class FireButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new TripleFireM ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+
+		Advance ();
 	}
 
 	public void AddAllFireS()
@@ -129,5 +142,12 @@ public class FireButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new AllFireS ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+
+		Advance ();
+	}
+
+	public void Advance()
+	{
+		sceneNavigator.GoToMageWaterAbilities();
 	}
 }

@@ -7,6 +7,7 @@ public class WaterButtonManager : MonoBehaviour {
 
 	// Use this for initialization
 	public static WaterButtonManager wbm;
+	public SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
 	public MagePlayer mp;
@@ -36,6 +37,7 @@ public class WaterButtonManager : MonoBehaviour {
 	public void AddSingleWaterS()
 	{
 		mp.AddOffensiveAbility (new SingleWaterS ());
+		Advance ();
 	}
 
 	public void AddSingleWaterM()
@@ -47,6 +49,7 @@ public class WaterButtonManager : MonoBehaviour {
 
 		buttons [3].interactable = true;
 		buttons [4].interactable = true;
+		Advance ();
 	}
 
 	public void AddSingleWaterL()
@@ -58,6 +61,7 @@ public class WaterButtonManager : MonoBehaviour {
 
 		buttons [7].interactable = true;
 		buttons [8].interactable = true;
+		Advance ();
 	}
 
 	public void AddSingleWaterH()
@@ -66,6 +70,7 @@ public class WaterButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new SingleWaterH ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+		Advance ();
 	}
 
 	public void AddDoubleWaterS()
@@ -77,6 +82,7 @@ public class WaterButtonManager : MonoBehaviour {
 
 		buttons [2].interactable = true;
 		buttons [3].interactable = true;
+		Advance ();
 	}
 
 	public void AddDoubleWaterM()
@@ -92,6 +98,7 @@ public class WaterButtonManager : MonoBehaviour {
 
 		buttons [6].interactable = true;
 		buttons [7].interactable = true;
+		Advance ();
 	}
 
 	public void AddDoubleWaterL()
@@ -101,6 +108,7 @@ public class WaterButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new DoubleWaterL ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+		Advance ();
 	}
 
 	public void AddTripleWaterS()
@@ -112,6 +120,7 @@ public class WaterButtonManager : MonoBehaviour {
 
 		buttons [5].interactable = true;
 		buttons [6].interactable = true;
+		Advance ();
 	}
 
 	public void AddTripleWaterM()
@@ -121,6 +130,7 @@ public class WaterButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new TripleWaterM ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+		Advance ();
 	}
 
 	public void AddAllWaterS()
@@ -129,5 +139,11 @@ public class WaterButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new AllWaterS ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+		Advance ();
+	}
+
+	public void Advance()
+	{
+		sceneNavigator.GoToMageEarthAbilities ();
 	}
 }

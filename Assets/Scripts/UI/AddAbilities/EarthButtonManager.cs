@@ -7,6 +7,7 @@ public class EarthButtonManager : MonoBehaviour {
 
 	// Use this for initialization
 	public static EarthButtonManager ebm;
+	public SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
 	public MagePlayer mp;
@@ -36,6 +37,7 @@ public class EarthButtonManager : MonoBehaviour {
 	public void AddSingleEarthS()
 	{
 		mp.AddOffensiveAbility (new SingleEarthS ());
+		Advance ();
 	}
 
 	public void AddSingleEarthM()
@@ -47,6 +49,7 @@ public class EarthButtonManager : MonoBehaviour {
 
 		buttons [3].interactable = true;
 		buttons [4].interactable = true;
+		Advance ();
 	}
 
 	public void AddSingleEarthL()
@@ -58,6 +61,7 @@ public class EarthButtonManager : MonoBehaviour {
 
 		buttons [7].interactable = true;
 		buttons [8].interactable = true;
+		Advance ();
 	}
 
 	public void AddSingleEarthH()
@@ -66,6 +70,8 @@ public class EarthButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new SingleEarthH ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+
+		Advance ();
 	}
 
 	public void AddDoubleEarthS()
@@ -77,6 +83,7 @@ public class EarthButtonManager : MonoBehaviour {
 
 		buttons [2].interactable = true;
 		buttons [3].interactable = true;
+		Advance ();
 	}
 
 	public void AddDoubleEarthM()
@@ -92,6 +99,7 @@ public class EarthButtonManager : MonoBehaviour {
 
 		buttons [6].interactable = true;
 		buttons [7].interactable = true;
+		Advance ();
 	}
 
 	public void AddDoubleEarthL()
@@ -101,6 +109,8 @@ public class EarthButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new DoubleEarthL ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+
+		Advance ();
 	}
 
 	public void AddTripleEarthS()
@@ -112,6 +122,7 @@ public class EarthButtonManager : MonoBehaviour {
 
 		buttons [5].interactable = true;
 		buttons [6].interactable = true;
+		Advance ();
 	}
 
 	public void AddTripleEarthM()
@@ -121,6 +132,8 @@ public class EarthButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new TripleEarthM ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+
+		Advance ();
 	}
 
 	public void AddAllEarthS()
@@ -129,5 +142,12 @@ public class EarthButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new AllEarthS ());
 		foreach (Button b in buttons)
 			b.interactable = false;
+
+		Advance ();
+	}
+
+	public void Advance()
+	{
+		sceneNavigator.GoToMageHealingAbilities ();
 	}
 }

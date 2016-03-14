@@ -7,6 +7,7 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 
 	// Use this for initialization
 	public static WarriorDefensiveButtonManager wdbm;
+	public SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
 	public WarriorPlayer mp;
@@ -73,6 +74,11 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 	{
 		mp.AddDefensiveAbility (new Withstand());
 		buttons [5].interactable = false;
+	}
+
+	public void Advance()
+	{
+		sceneNavigator.GoToPreScreen ();
 	}
 
 }

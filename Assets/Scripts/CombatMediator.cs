@@ -8,6 +8,7 @@ public class CombatMediator : MonoBehaviour {
 	// Use this for initialization
     public PlayerManager playerManager;
     public EnemyManager enemyManager;
+	public SceneNavigator sceneNavigator;
 	private List<Unit> units;
 
 	void Start () {
@@ -79,6 +80,10 @@ public class CombatMediator : MonoBehaviour {
 				}
 			}
 		}
+		if (Victory ())
+			sceneNavigator.GoToVictoryScreen ();
+		else
+			sceneNavigator.GoToDefeatScreen ();
 		//if victory go to victory / level up screen
 		//if defeat try again
 	}
