@@ -7,7 +7,7 @@ public class WarriorPlayer : Player
 {
 	public static WarriorPlayer wp;
 
-	public static WarriorPlayer Instance {//this and awake make warrior a singleton
+	/*(public static WarriorPlayer Instance {//this and awake make warrior a singleton
 		get {
 			if (wp == null) {
 				wp = FindObjectOfType<WarriorPlayer> ();
@@ -19,13 +19,13 @@ public class WarriorPlayer : Player
 			}
 			return wp;
 		}
-	}
+	}*/
 
 	void Awake(){
 
-		DontDestroyOnLoad (this.gameObject);
+		//DontDestroyOnLoad (this.gameObject);
 		if (wp == null) {
-			wp = this as WarriorPlayer;
+			wp = this;
 			SetMaxHealth(100);
 			SetHealth(GetMaxHealth());
 			SetSpeed(75);

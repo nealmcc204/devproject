@@ -13,15 +13,15 @@ public class UnitInfo : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		self = gameObject.GetComponentInParent<Unit> ();
+	}
+	
+	// Update is called once per frame
+	void Update () {
 		maxHealth = self.GetMaxHealth ();
 		healthScale = new Vector3 (1f, 1f, 1f);
 		healthText = maxHealth + "/" + maxHealth;
 		gameObject.GetComponentInChildren<Text> ().text = healthText;
 		healthBar.transform.localScale = healthScale; 
-	}
-	
-	// Update is called once per frame
-	void Update () {
 		healthScale.x = GetPercentageHealth ();
 		healthBar.transform.localScale = healthScale;
 		UpdateHealthText ();

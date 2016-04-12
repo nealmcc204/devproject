@@ -7,26 +7,13 @@ using UnityEngine.SceneManagement;
 public class FireButtonManager : MonoBehaviour {
 
 	// Use this for initialization
-	public static FireButtonManager fbm;
 	public SceneNavigator sceneNavigator;
-	public GameObject magePrefab;
-	private GameObject character;
 
 	public List<Button> buttons = new List<Button>();
 	private MagePlayer mp;
 
-	void Awake() {//Mage Player Singleton
-		if (!fbm) {
-			fbm = this;
-			DontDestroyOnLoad (gameObject);
-		} else {
-			Destroy (gameObject);
-		}
-	}
-
 	void Start () {
-		character = (GameObject)Instantiate (magePrefab, new Vector3 (0, 0, 0), Quaternion.identity);
-		mp = character.GetComponentInChildren<MagePlayer> ();
+		mp = (MagePlayer)FindObjectOfType<MagePlayer> ();
 		foreach (Button b in buttons)
 			b.interactable = false;
 
@@ -153,7 +140,7 @@ public class FireButtonManager : MonoBehaviour {
 
 	public void Advance()
 	{
-		SceneManager.LoadScene ("CombatScene");
-		//sceneNavigator.GoToMageWaterAbilities();
+		//SceneManager.LoadScene ("Level2");
+		sceneNavigator.GoToMageWaterAbilities();
 	}
 }

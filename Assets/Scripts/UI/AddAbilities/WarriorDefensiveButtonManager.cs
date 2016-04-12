@@ -6,22 +6,13 @@ using UnityEngine.UI;
 public class WarriorDefensiveButtonManager : MonoBehaviour {
 
 	// Use this for initialization
-	public static WarriorDefensiveButtonManager wdbm;
 	public SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
-	public WarriorPlayer mp;
-
-	void Awake() {//Mage Player Singleton
-		if (!wdbm) {
-			wdbm = this;
-			DontDestroyOnLoad (gameObject);
-		} else {
-			Destroy (gameObject);
-		}
-	}
+	private WarriorPlayer wp;
 
 	void Start () {
+		wp = (WarriorPlayer)FindObjectOfType<WarriorPlayer> ();
 		foreach (Button b in buttons)
 			b.interactable = false;
 
@@ -38,7 +29,7 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 
 	public void AddTauntS()
 	{
-		mp.AddDefensiveAbility (new TauntS ());
+		wp.AddDefensiveAbility (new TauntS ());
 		buttons [0].interactable = false;
 		buttons [1].interactable = true;
 		Advance ();
@@ -46,8 +37,8 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 
 	public void AddTauntM()
 	{
-		mp.RemoveDefensiveAbility (new TauntS());
-		mp.AddDefensiveAbility (new TauntM());
+		wp.RemoveDefensiveAbility (new TauntS());
+		wp.AddDefensiveAbility (new TauntM());
 		buttons [1].interactable = false;
 		buttons [2].interactable = true;
 		Advance ();
@@ -55,29 +46,29 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 
 	public void AddTauntL()
 	{
-		mp.RemoveDefensiveAbility (new TauntM());
-		mp.AddDefensiveAbility (new TauntL());
+		wp.RemoveDefensiveAbility (new TauntM());
+		wp.AddDefensiveAbility (new TauntL());
 		buttons [2].interactable = false;
 		Advance ();
 	}
 
 	public void AddWeakRevive()
 	{
-		mp.AddDefensiveAbility (new WeakRevive ());
+		wp.AddDefensiveAbility (new WeakRevive ());
 		buttons [3].interactable = false;
 		Advance ();
 	}
 
 	public void AddWeakHeal()
 	{
-		mp.AddDefensiveAbility (new WeakHeal ());
+		wp.AddDefensiveAbility (new WeakHeal ());
 		buttons [4].interactable = false;
 		Advance ();
 	}
 		
 	public void AddWithstand()
 	{
-		mp.AddDefensiveAbility (new Withstand());
+		wp.AddDefensiveAbility (new Withstand());
 		buttons [5].interactable = false;
 		Advance ();
 	}

@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 public class SceneNavigator : MonoBehaviour {
 
 	// Use this for initialization
-	public static SceneNavigator sn;
+	//public static SceneNavigator sn;
 	int currentLevelNum;
 
-	public static SceneNavigator Instance {
+	/*public static SceneNavigator Instance {
 		get {
 			if (sn == null) {
 				sn = FindObjectOfType<SceneNavigator> ();
@@ -20,9 +20,9 @@ public class SceneNavigator : MonoBehaviour {
 			}
 			return sn;
 		}
-	}
+	}*/
 
-	void Awake(){
+	/*void Awake(){
 
 		DontDestroyOnLoad (this.gameObject);
 		if (sn == null) {
@@ -31,7 +31,7 @@ public class SceneNavigator : MonoBehaviour {
 			Destroy (gameObject);
 		}
 
-	}
+	}*/
 
 	void Start () {
 		currentLevelNum = 1;
@@ -54,8 +54,8 @@ public class SceneNavigator : MonoBehaviour {
 
 	public void GoToLevel1()
 	{
-		//SceneManager.LoadScene ("Level1");
-		SceneManager.LoadScene("CombatScene");
+		SceneManager.LoadScene ("Level1");
+		//SceneManager.LoadScene("CombatScene");
 	}
 
 	public void GoToLevel2()

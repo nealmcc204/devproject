@@ -6,22 +6,13 @@ using UnityEngine.UI;
 public class WarriorOffensiveButtonManager : MonoBehaviour {
 
 	// Use this for initialization
-	public static WarriorOffensiveButtonManager wobm;
 	public SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
-	public WarriorPlayer mp;
-
-	void Awake() {//Mage Player Singleton
-		if (!wobm) {
-			wobm = this;
-			DontDestroyOnLoad (gameObject);
-		} else {
-			Destroy (gameObject);
-		}
-	}
+	public WarriorPlayer wp;
 
 	void Start () {
+		wp = (WarriorPlayer)FindObjectOfType<WarriorPlayer> ();
 		foreach (Button b in buttons)
 			b.interactable = false;
 
@@ -36,8 +27,8 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 
 	public void AddDoubleStrikeM()
 	{
-		mp.RemoveOffensiveAbility (new DoubleStrikeS());
-		mp.AddOffensiveAbility (new DoubleStrikeM ());
+		wp.RemoveOffensiveAbility (new DoubleStrikeS());
+		wp.AddOffensiveAbility (new DoubleStrikeM ());
 		buttons [0].interactable = false;
 		buttons [1].interactable = true;
 		Advance ();
@@ -45,8 +36,8 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 
 	public void AddDoubleStrikeL()
 	{
-		mp.RemoveOffensiveAbility (new DoubleStrikeM());
-		mp.AddOffensiveAbility (new DoubleStrikeL());
+		wp.RemoveOffensiveAbility (new DoubleStrikeM());
+		wp.AddOffensiveAbility (new DoubleStrikeL());
 		buttons [1].interactable = false;
 		buttons [2].interactable = true;
 		Advance ();
@@ -54,16 +45,16 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 
 	public void AddTripleStrikeL()
 	{
-		mp.RemoveOffensiveAbility (new DoubleStrikeL());
-		mp.AddOffensiveAbility (new TripleStrikeL());
+		wp.RemoveOffensiveAbility (new DoubleStrikeL());
+		wp.AddOffensiveAbility (new TripleStrikeL());
 		buttons [2].interactable = false;
 		Advance ();
 	}
 
 	public void AddStunSmashM()
 	{
-		mp.RemoveOffensiveAbility (new StunSmashS());
-		mp.AddOffensiveAbility (new StunSmashM ());
+		wp.RemoveOffensiveAbility (new StunSmashS());
+		wp.AddOffensiveAbility (new StunSmashM ());
 		buttons [3].interactable = false;
 		buttons [4].interactable = true;
 		Advance ();
@@ -71,8 +62,8 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 
 	public void AddStunSmashL()
 	{
-		mp.RemoveOffensiveAbility (new StunSmashM());
-		mp.AddOffensiveAbility (new StunSmashL ());
+		wp.RemoveOffensiveAbility (new StunSmashM());
+		wp.AddOffensiveAbility (new StunSmashL ());
 		buttons [4].interactable = false;
 		buttons [5].interactable = true;
 		Advance ();
@@ -80,8 +71,8 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 
 	public void AddStunSmashH()
 	{
-		mp.RemoveOffensiveAbility (new StunSmashL());
-		mp.AddOffensiveAbility (new StunSmashH());
+		wp.RemoveOffensiveAbility (new StunSmashL());
+		wp.AddOffensiveAbility (new StunSmashH());
 		buttons [5].interactable = false;
 		Advance ();
 	}

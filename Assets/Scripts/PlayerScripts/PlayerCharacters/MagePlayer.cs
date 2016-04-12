@@ -9,7 +9,7 @@ public class MagePlayer : Player
 {
 	public static MagePlayer mp;
 
-	public static MagePlayer Instance {
+	/*public static MagePlayer Instance {
 		get {
 			if (mp == null) {
 				mp = FindObjectOfType<MagePlayer> ();
@@ -21,13 +21,12 @@ public class MagePlayer : Player
 			}
 			return mp;
 		}
-	}
+	}*/	
 
 	void Awake(){
-		
-		DontDestroyOnLoad (this.gameObject);
+		//DontDestroyOnLoad (this.gameObject);
 		if (mp == null) {
-			mp = this as MagePlayer;
+			mp = this;
 			SetMaxHealth(75);
 			SetHealth(GetMaxHealth());
 			SetSpeed(100);
@@ -36,7 +35,7 @@ public class MagePlayer : Player
 			AddOffensiveAbility (new SingleWaterS());
 			AddDefensiveAbility (new SingleHealS());
 			SetShield (ElementType.NONE);
-		} else {
+		} else if (mp != this)  {
 			Destroy (gameObject);
 		}
 			

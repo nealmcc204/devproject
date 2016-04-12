@@ -6,22 +6,13 @@ using UnityEngine.UI;
 public class EarthButtonManager : MonoBehaviour {
 
 	// Use this for initialization
-	public static EarthButtonManager ebm;
 	public SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
-	public MagePlayer mp;
-
-	void Awake() {//Mage Player Singleton
-		if (!ebm) {
-			ebm = this;
-			DontDestroyOnLoad (gameObject);
-		} else {
-			Destroy (gameObject);
-		}
-	}
+	private MagePlayer mp;
 
 	void Start () {
+		mp = (MagePlayer)FindObjectOfType<MagePlayer> ();
 		foreach (Button b in buttons)
 			b.interactable = false;
 
