@@ -13,15 +13,7 @@ public class HealingButtonManager : MonoBehaviour {
 
 	void Start () {
 		mp = (MagePlayer)FindObjectOfType<MagePlayer> ();
-		foreach (Button b in buttons)
-			b.interactable = false;
-
-		buttons [0].interactable = true;
-		buttons [1].interactable = true;
-		buttons [5].interactable = true;
-		buttons [8].interactable = true;
-		buttons [10].interactable = true;
-		buttons [12].interactable = true;
+		SetUpButtons ();
 	}
 
 	// Update is called once per frame
@@ -162,6 +154,77 @@ public class HealingButtonManager : MonoBehaviour {
 		mp.AddDefensiveAbility (new DoubleEarthShield ());
 		buttons [13].interactable = false;
 		Advance ();
+	}
+
+	public void SetUpButtons()
+	{
+		foreach (Button b in buttons)
+			b.interactable = false;
+		
+		buttons [5].interactable = true;
+		buttons [8].interactable = true;
+		buttons [10].interactable = true;
+		buttons [12].interactable = true;
+
+		foreach (DefensiveAbility da in mp.GetDefensiveAbilities()) {
+			switch (da.GetAbilityTag()) {
+			case "Single Heal S":
+				buttons [0].interactable = true;
+				buttons [1].interactable = true;
+				break;
+			case "Double Heal S":
+				buttons [2].interactable = true;
+				buttons [3].interactable = true;
+				break;
+
+			case "Single Heal M":
+				buttons [2].interactable = true;
+				buttons [3].interactable = true;
+				break;
+
+			case "Double Heal M":
+				break;
+
+			case "Single Heal Full":
+				break;
+
+			case "Lesser Revive": 
+				buttons [5].interactable = false;
+				buttons [6].interactable = true;
+				break;
+
+			case "Revive": 
+				buttons [7].interactable = true;
+				break;
+
+			case "Greater Revive":
+				break;
+
+			case "Single Water Shield":
+				buttons [8].interactable = false;
+				buttons [9].interactable = true;
+				break;
+
+			case "Double Water Shield":
+				break;
+
+			case "Single FireShield":
+				buttons [10].interactable = false;
+				buttons [11].interactable = true;
+				break;
+
+			case "Double Fire Shield":
+				break;
+
+			case "Single Earth Shield":
+				buttons [12].interactable = false;
+				buttons [13].interactable = true;
+				break;
+
+			case  "Double Earth Shield":
+				break;
+			}
+		}
 	}
 
 	public void Advance()

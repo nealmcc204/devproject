@@ -87,6 +87,9 @@ public class CombatMediator : MonoBehaviour {
 				}
 			}
 		}
+		foreach (Unit u in units) {
+			u.GetComponentInChildren<Canvas> ().sortingOrder = 0;
+		}
 		if (Victory ())
 			sceneNavigator.GoToVictoryScreen ();
 		else

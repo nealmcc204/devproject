@@ -15,7 +15,7 @@ public class TripleStrikeL : BasePhysical {
 
 	public override string GetAbilityTag()
 	{
-		string at = "TripleStrikeL";
+		string at = "Triple Strike L";
 		return at;
 	}
 

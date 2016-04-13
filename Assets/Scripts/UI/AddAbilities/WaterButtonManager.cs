@@ -16,10 +16,8 @@ public class WaterButtonManager : MonoBehaviour {
 		foreach (Button b in buttons)
 			b.interactable = false;
 
-		buttons [0].interactable = true;
-		buttons [1].interactable = true;
+		SetUpButtons ();
 	}
-
 	// Update is called once per frame
 	void Update () {
 
@@ -35,11 +33,6 @@ public class WaterButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new SingleWaterS());
 		mp.AddOffensiveAbility (new SingleWaterM ());
-		buttons [0].interactable = false;
-		buttons [1].interactable = false;
-
-		buttons [3].interactable = true;
-		buttons [4].interactable = true;
 		Advance ();
 	}
 
@@ -47,11 +40,6 @@ public class WaterButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new SingleWaterM ());
 		mp.AddOffensiveAbility (new SingleWaterL ());
-		buttons [3].interactable = false;
-		buttons [4].interactable = false;
-
-		buttons [7].interactable = true;
-		buttons [8].interactable = true;
 		Advance ();
 	}
 
@@ -68,11 +56,6 @@ public class WaterButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new SingleWaterS ());
 		mp.AddOffensiveAbility (new DoubleWaterS ());
-		buttons [0].interactable = false;
-		buttons [1].interactable = false;
-
-		buttons [2].interactable = true;
-		buttons [3].interactable = true;
 		Advance ();
 	}
 
@@ -81,14 +64,6 @@ public class WaterButtonManager : MonoBehaviour {
 		mp.RemoveOffensiveAbility (new DoubleWaterS ());
 		mp.RemoveOffensiveAbility (new SingleWaterM ());
 		mp.AddOffensiveAbility (new DoubleWaterM ());
-		buttons [0].interactable = false;
-		buttons [1].interactable = false;
-		buttons [2].interactable = false;
-		buttons [3].interactable = false;
-		buttons [4].interactable = false;
-
-		buttons [6].interactable = true;
-		buttons [7].interactable = true;
 		Advance ();
 	}
 
@@ -97,8 +72,6 @@ public class WaterButtonManager : MonoBehaviour {
 		mp.RemoveOffensiveAbility (new DoubleWaterM ());
 		mp.RemoveOffensiveAbility (new SingleWaterL ());
 		mp.AddOffensiveAbility (new DoubleWaterL ());
-		foreach (Button b in buttons)
-			b.interactable = false;
 		Advance ();
 	}
 
@@ -106,11 +79,6 @@ public class WaterButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new DoubleWaterS ());
 		mp.AddOffensiveAbility (new TripleWaterS ());
-		buttons [0].interactable = false;
-		buttons [3].interactable = false;
-
-		buttons [5].interactable = true;
-		buttons [6].interactable = true;
 		Advance ();
 	}
 
@@ -119,8 +87,6 @@ public class WaterButtonManager : MonoBehaviour {
 		mp.RemoveOffensiveAbility (new TripleWaterS ());
 		mp.RemoveOffensiveAbility (new DoubleWaterM ());
 		mp.AddOffensiveAbility (new TripleWaterM ());
-		foreach (Button b in buttons)
-			b.interactable = false;
 		Advance ();
 	}
 
@@ -128,10 +94,57 @@ public class WaterButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new TripleWaterS ());
 		mp.AddOffensiveAbility (new AllWaterS ());
-		foreach (Button b in buttons)
-			b.interactable = false;
 		Advance ();
 	}
+
+		public void SetUpButtons()
+		{
+			foreach (OffensiveAbility oa in mp.GetOffensiveAbilities()) {
+				switch (oa.GetAbilityTag ()) {
+				case "Single Water S": 
+					buttons [0].interactable = true;
+					buttons [1].interactable = true;
+					break;
+
+				case "Single Water M":
+					buttons [3].interactable = true;
+					buttons [4].interactable = true;
+					break;
+
+				case "Single Water L":
+					buttons [7].interactable = true;
+					buttons [8].interactable = true;
+					break;
+
+				case "Single Water H":
+					break;
+
+				case "Double Water S":
+					buttons [2].interactable = true;
+					buttons [3].interactable = true;
+					break;
+
+				case "Double Water M":
+					buttons [6].interactable = true;
+					buttons [7].interactable = true;
+					break;
+
+				case "Double Water L":
+					break;
+
+				case "Triple Water S":
+					buttons [5].interactable = true;
+					buttons [6].interactable = true;
+					break;
+
+				case "Triple Water M":
+					break;
+
+				case "All Water S":
+					break;
+				}
+			}
+		}
 
 	public void Advance()
 	{

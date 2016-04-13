@@ -19,18 +19,21 @@ public class PlayerManager : MonoBehaviour {
 		canvas = GameObject.FindGameObjectWithTag ("MainCanvas");
 		magePlayer = GameObject.Find ("Mage Player");
 		if (magePlayer == null) {
-			magePlayer = (GameObject)Instantiate (magePrefab, new Vector3 (0, 0, 0), Quaternion.identity);
+			magePlayer = (GameObject)Instantiate (magePrefab, new Vector3 (50, 0, 0), Quaternion.identity);
 			magePlayer.name = "Mage Player";
 
+
 		}
+		magePlayer.GetComponentInChildren<Canvas> ().sortingOrder = 1;
 		DontDestroyOnLoad (magePlayer);
 		Players [0] = magePlayer.GetComponentInChildren<MagePlayer> ();
 
 		warriorPlayer = GameObject.Find ("Warrior Player");
 		if (warriorPlayer == null) {
-			warriorPlayer = (GameObject)Instantiate (warriorPrefab, new Vector3 (0, 0, 0), Quaternion.identity);
+			warriorPlayer = (GameObject)Instantiate (warriorPrefab, new Vector3 (50, 0, 0), Quaternion.identity);
 			warriorPlayer.name = "Warrior Player";
 		}
+		warriorPlayer.GetComponentInChildren<Canvas> ().sortingOrder = 1;
 		DontDestroyOnLoad (warriorPlayer);
 		Players [1] = warriorPlayer.GetComponentInChildren<WarriorPlayer> ();
 

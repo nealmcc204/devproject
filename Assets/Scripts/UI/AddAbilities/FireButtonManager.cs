@@ -17,8 +17,7 @@ public class FireButtonManager : MonoBehaviour {
 		foreach (Button b in buttons)
 			b.interactable = false;
 
-		buttons [0].interactable = true;
-		buttons [1].interactable = true;
+		SetUpButtons ();
 	}
 
 	// Update is called once per frame
@@ -36,11 +35,6 @@ public class FireButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new SingleFireS());
 		mp.AddOffensiveAbility (new SingleFireM ());
-		buttons [0].interactable = false;
-		buttons [1].interactable = false;
-
-		buttons [3].interactable = true;
-		buttons [4].interactable = true;
 		Advance ();
 	}
 
@@ -48,11 +42,6 @@ public class FireButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new SingleFireM ());
 		mp.AddOffensiveAbility (new SingleFireL ());
-		buttons [3].interactable = false;
-		buttons [4].interactable = false;
-
-		buttons [7].interactable = true;
-		buttons [8].interactable = true;
 		Advance ();
 	}
 
@@ -60,9 +49,6 @@ public class FireButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new SingleFireL());
 		mp.AddOffensiveAbility (new SingleFireH ());
-		foreach (Button b in buttons)
-			b.interactable = false;
-
 		Advance ();
 	}
 
@@ -70,11 +56,6 @@ public class FireButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new SingleFireS ());
 		mp.AddOffensiveAbility (new DoubleFireS ());
-		buttons [0].interactable = false;
-		buttons [1].interactable = false;
-
-		buttons [2].interactable = true;
-		buttons [3].interactable = true;
 		Advance ();
 	}
 
@@ -83,14 +64,6 @@ public class FireButtonManager : MonoBehaviour {
 		mp.RemoveOffensiveAbility (new DoubleFireS ());
 		mp.RemoveOffensiveAbility (new SingleFireM ());
 		mp.AddOffensiveAbility (new DoubleFireM ());
-		buttons [0].interactable = false;
-		buttons [1].interactable = false;
-		buttons [2].interactable = false;
-		buttons [3].interactable = false;
-		buttons [4].interactable = false;
-
-		buttons [6].interactable = true;
-		buttons [7].interactable = true;
 		Advance ();
 	}
 
@@ -99,9 +72,6 @@ public class FireButtonManager : MonoBehaviour {
 		mp.RemoveOffensiveAbility (new DoubleFireM ());
 		mp.RemoveOffensiveAbility (new SingleFireL ());
 		mp.AddOffensiveAbility (new DoubleFireL ());
-		foreach (Button b in buttons)
-			b.interactable = false;
-
 		Advance ();
 	}
 
@@ -111,9 +81,6 @@ public class FireButtonManager : MonoBehaviour {
 		mp.AddOffensiveAbility (new TripleFireS ());
 		buttons [0].interactable = false;
 		buttons [3].interactable = false;
-
-		buttons [5].interactable = true;
-		buttons [6].interactable = true;
 		Advance ();
 	}
 
@@ -136,6 +103,55 @@ public class FireButtonManager : MonoBehaviour {
 			b.interactable = false;
 
 		Advance ();
+	}
+
+	public void SetUpButtons()
+	{
+		foreach (OffensiveAbility oa in mp.GetOffensiveAbilities()) {
+			switch (oa.GetAbilityTag ()) {
+			case "Single Fire S": 
+				buttons [0].interactable = true;
+				buttons [1].interactable = true;
+				break;
+			
+			case "Single Fire M":
+				buttons [3].interactable = true;
+				buttons [4].interactable = true;
+				break;
+
+			case "Single Fire L":
+				buttons [7].interactable = true;
+				buttons [8].interactable = true;
+				break;
+
+			case "Single Fire H":
+				break;
+
+			case "Double Fire S":
+				buttons [2].interactable = true;
+				buttons [3].interactable = true;
+				break;
+
+			case "Double Fire M":
+				buttons [6].interactable = true;
+				buttons [7].interactable = true;
+				break;
+
+			case "Double Fire L":
+				break;
+
+			case "Triple Fire S":
+				buttons [5].interactable = true;
+				buttons [6].interactable = true;
+				break;
+
+			case "Triple Fire M":
+				break;
+
+			case "All Fire S":
+				break;
+			}
+		}
 	}
 
 	public void Advance()

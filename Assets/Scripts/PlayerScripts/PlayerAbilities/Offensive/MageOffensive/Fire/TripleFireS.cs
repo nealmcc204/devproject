@@ -18,7 +18,7 @@ public class TripleFireS : BaseFire {
 
 	public override string GetAbilityTag()
 	{
-		string at = "TripleFireS";
+		string at = "Triple Fire S";
 		return at;
 	}
 

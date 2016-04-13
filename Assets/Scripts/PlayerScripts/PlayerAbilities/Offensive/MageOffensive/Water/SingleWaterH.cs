@@ -16,7 +16,7 @@ public class SingleWaterH : BaseWater {
 
 	public override string GetAbilityTag()
 	{
-		string at = "SingleWaterH";
+		string at = "Single Water H";
 		return at;
 	}
 

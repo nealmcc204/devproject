@@ -14,7 +14,7 @@ public class SingleFireM : BaseFire {
 
 	public override string GetAbilityTag()
 	{
-		string at = "SingleFireM";
+		string at = "Single Fire M";
 		return at;
 	}
 

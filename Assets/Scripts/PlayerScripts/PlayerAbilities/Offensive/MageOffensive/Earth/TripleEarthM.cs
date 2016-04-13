@@ -18,7 +18,7 @@ public class TripleEarthM : BaseEarth {
 
 	public override string GetAbilityTag()
 	{
-		string at = "TripleEarthM";
+		string at = "Triple Earth M";
 		return at;
 	}
 

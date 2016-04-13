@@ -15,7 +15,7 @@ public class DoubleStrikeM : BasePhysical {
 
 	public override string GetAbilityTag()
 	{
-		string at = "DoubleStrikeM";
+		string at = "Double Strike M";
 		return at;
 	}
 

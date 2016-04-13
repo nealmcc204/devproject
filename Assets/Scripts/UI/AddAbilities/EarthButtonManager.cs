@@ -6,18 +6,18 @@ using UnityEngine.UI;
 public class EarthButtonManager : MonoBehaviour {
 
 	// Use this for initialization
-	public SceneNavigator sceneNavigator;
+	private SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
 	private MagePlayer mp;
 
 	void Start () {
+		sceneNavigator = (SceneNavigator)FindObjectOfType<SceneNavigator> ();
 		mp = (MagePlayer)FindObjectOfType<MagePlayer> ();
 		foreach (Button b in buttons)
 			b.interactable = false;
 
-		buttons [0].interactable = true;
-		buttons [1].interactable = true;
+		SetUpButtons ();
 	}
 	
 	// Update is called once per frame
@@ -35,11 +35,6 @@ public class EarthButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new SingleEarthS());
 		mp.AddOffensiveAbility (new SingleEarthM ());
-		buttons [0].interactable = false;
-		buttons [1].interactable = false;
-
-		buttons [3].interactable = true;
-		buttons [4].interactable = true;
 		Advance ();
 	}
 
@@ -47,11 +42,6 @@ public class EarthButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new SingleEarthM ());
 		mp.AddOffensiveAbility (new SingleEarthL ());
-		buttons [3].interactable = false;
-		buttons [4].interactable = false;
-
-		buttons [7].interactable = true;
-		buttons [8].interactable = true;
 		Advance ();
 	}
 
@@ -69,11 +59,6 @@ public class EarthButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new SingleEarthS ());
 		mp.AddOffensiveAbility (new DoubleEarthS ());
-		buttons [0].interactable = false;
-		buttons [1].interactable = false;
-
-		buttons [2].interactable = true;
-		buttons [3].interactable = true;
 		Advance ();
 	}
 
@@ -82,14 +67,6 @@ public class EarthButtonManager : MonoBehaviour {
 		mp.RemoveOffensiveAbility (new DoubleEarthS ());
 		mp.RemoveOffensiveAbility (new SingleEarthM ());
 		mp.AddOffensiveAbility (new DoubleEarthM ());
-		buttons [0].interactable = false;
-		buttons [1].interactable = false;
-		buttons [2].interactable = false;
-		buttons [3].interactable = false;
-		buttons [4].interactable = false;
-
-		buttons [6].interactable = true;
-		buttons [7].interactable = true;
 		Advance ();
 	}
 
@@ -98,9 +75,6 @@ public class EarthButtonManager : MonoBehaviour {
 		mp.RemoveOffensiveAbility (new DoubleEarthM ());
 		mp.RemoveOffensiveAbility (new SingleEarthL ());
 		mp.AddOffensiveAbility (new DoubleEarthL ());
-		foreach (Button b in buttons)
-			b.interactable = false;
-
 		Advance ();
 	}
 
@@ -108,11 +82,6 @@ public class EarthButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new DoubleEarthS ());
 		mp.AddOffensiveAbility (new TripleEarthS ());
-		buttons [0].interactable = false;
-		buttons [3].interactable = false;
-
-		buttons [5].interactable = true;
-		buttons [6].interactable = true;
 		Advance ();
 	}
 
@@ -121,9 +90,6 @@ public class EarthButtonManager : MonoBehaviour {
 		mp.RemoveOffensiveAbility (new TripleEarthS ());
 		mp.RemoveOffensiveAbility (new DoubleEarthM ());
 		mp.AddOffensiveAbility (new TripleEarthM ());
-		foreach (Button b in buttons)
-			b.interactable = false;
-
 		Advance ();
 	}
 
@@ -131,10 +97,56 @@ public class EarthButtonManager : MonoBehaviour {
 	{
 		mp.RemoveOffensiveAbility (new TripleEarthS ());
 		mp.AddOffensiveAbility (new AllEarthS ());
-		foreach (Button b in buttons)
-			b.interactable = false;
-
 		Advance ();
+	}
+
+	public void SetUpButtons()
+	{
+		foreach (OffensiveAbility oa in mp.GetOffensiveAbilities()) {
+			switch (oa.GetAbilityTag ()) {
+			case "Single Earth S": 
+				buttons [0].interactable = true;
+				buttons [1].interactable = true;
+				break;
+
+			case "Single Earth M":
+				buttons [3].interactable = true;
+				buttons [4].interactable = true;
+				break;
+
+			case "Single Earth L":
+				buttons [7].interactable = true;
+				buttons [8].interactable = true;
+				break;
+
+			case "Single Earth H":
+				break;
+
+			case "Double Earth S":
+				buttons [2].interactable = true;
+				buttons [3].interactable = true;
+				break;
+
+			case "Double Earth M":
+				buttons [6].interactable = true;
+				buttons [7].interactable = true;
+				break;
+
+			case "Double Earth L":
+				break;
+
+			case "Triple Earth S":
+				buttons [5].interactable = true;
+				buttons [6].interactable = true;
+				break;
+
+			case "Triple Earth M":
+				break;
+
+			case "All Earth S":
+				break;
+			}
+		}
 	}
 
 	public void Advance()

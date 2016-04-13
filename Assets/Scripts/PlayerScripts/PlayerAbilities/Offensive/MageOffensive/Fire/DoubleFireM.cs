@@ -18,7 +18,7 @@ public class DoubleFireM : BaseFire {
 
 	public override string GetAbilityTag()
 	{
-		string at = "DoubleFireM";
+		string at = "Double Fire M";
 		return at;
 	}
 

@@ -16,7 +16,7 @@ public class SingleEarthH : BaseEarth {
 
 	public override string GetAbilityTag()
 	{
-		string at = "SingleEarthH";
+		string at = "Single Earth H";
 		return at;
 	}
 

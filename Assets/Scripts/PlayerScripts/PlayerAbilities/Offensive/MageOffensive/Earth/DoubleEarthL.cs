@@ -18,7 +18,7 @@ public class DoubleEarthL : BaseEarth {
 
 	public override string GetAbilityTag()
 	{
-		string at = "DoubleEarthL";
+		string at = "Double Earth L";
 		return at;
 	}
 

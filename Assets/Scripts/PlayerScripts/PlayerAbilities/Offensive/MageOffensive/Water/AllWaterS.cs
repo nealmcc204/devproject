@@ -18,7 +18,7 @@ public class AllWaterS : BaseWater {
 
 	public override string GetAbilityTag()
 	{
-		string at = "AllWaterS";
+		string at = "All Water S";
 		return at;
 	}
 

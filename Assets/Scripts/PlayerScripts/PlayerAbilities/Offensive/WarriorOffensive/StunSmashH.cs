@@ -16,7 +16,7 @@ public class StunSmashH : BasePhysical {
 
 	public override string GetAbilityTag()
 	{
-		string at = "StunSmashH";
+		string at = "Stun Smash H";
 		return at;
 	}
 

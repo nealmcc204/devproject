@@ -18,7 +18,7 @@ public class TripleWaterM : BaseWater {
 
 	public override string GetAbilityTag()
 	{
-		string at = "TripleWaterM";
+		string at = "Triple Water M";
 		return at;
 	}
 
