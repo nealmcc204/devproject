@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class WarriorDefensiveButtonManager : MonoBehaviour {
 
 	// Use this for initialization
-	public SceneNavigator sceneNavigator;
+	private SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
 	private WarriorPlayer wp;
 
 	void Start () {
+
+		sceneNavigator = (SceneNavigator)FindObjectOfType<SceneNavigator> ();
 		wp = (WarriorPlayer)FindObjectOfType<WarriorPlayer> ();
+		SetUpButtons ();
 		foreach (Button b in buttons)
 			b.interactable = false;
 
@@ -71,6 +74,43 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 		wp.AddDefensiveAbility (new Withstand());
 		buttons [5].interactable = false;
 		Advance ();
+	}
+
+	public void SetUpButtons()
+	{
+		foreach (Button b in buttons)
+			b.interactable = false;
+
+		foreach (DefensiveAbility da in wp.GetDefensiveAbilities()) {
+			switch (da.GetAbilityTag ()) {
+			case "Taunt S":
+				buttons [0].interactable = false;
+				buttons [1].interactable = true;
+				break;
+
+			case "Taunt M":
+				buttons [0].interactable = false;
+				buttons [2].interactable = true;
+				break;
+
+			case "Taunt L":
+				buttons [0].interactable = false;
+				break;
+
+			case "Weak Revive":
+				buttons [3].interactable = false;
+				break;
+
+			case "Weak Heal":
+				buttons [4].interactable = false;
+				break;
+
+			case "Withstand":
+				buttons [5].interactable = false;
+				break;
+			}
+		}
+
 	}
 
 	public void Advance()

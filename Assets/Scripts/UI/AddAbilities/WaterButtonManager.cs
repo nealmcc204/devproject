@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class WaterButtonManager : MonoBehaviour {
 
 	// Use this for initialization
-	public SceneNavigator sceneNavigator;
+	private SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
 	private MagePlayer mp;
 
 	void Start () {
+		sceneNavigator = (SceneNavigator)FindObjectOfType<SceneNavigator> ();
 		mp = (MagePlayer)FindObjectOfType<MagePlayer> ();
 		foreach (Button b in buttons)
 			b.interactable = false;

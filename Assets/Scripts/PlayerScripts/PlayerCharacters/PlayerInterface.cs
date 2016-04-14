@@ -16,6 +16,7 @@ public abstract class Player : Unit {
 	public GameObject buttonPrefab;
 	private Canvas canvas;
 	private List<GameObject> buttons = new List<GameObject> ();
+	private int numTargets;
 
 	public override void DoMove(List<Player> players, List<Enemy> enemies)
 	{
@@ -29,7 +30,6 @@ public abstract class Player : Unit {
 	IEnumerator TakeTurn(List<Player> players, List<Enemy> enemies)
 	{
 		//UseAbility (defensiveAbilities [0], players [0]);
-		int numTargets;
 		canvas = GetComponentInChildren<Canvas>();
 		CreateTurnAbilityButtons();
 		while (GetSelectedOffensiveAbility () == null && GetSelectedDefensiveAbility() == null) {
@@ -108,6 +108,7 @@ public abstract class Player : Unit {
 		if (taunters.Count > 0) {//replaces the targets with the taunting enemies
 			targets.Clear ();
 			targets.AddRange(taunters);
+			numTargets = 1;
 		}
 
 		foreach (Enemy t in targets) {

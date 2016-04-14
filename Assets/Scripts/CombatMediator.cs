@@ -9,10 +9,14 @@ public class CombatMediator : MonoBehaviour {
 	// Use this for initialization
     public PlayerManager playerManager;
     public EnemyManager enemyManager;
-	public SceneNavigator sceneNavigator;
+	private SceneNavigator sceneNavigator;
 	private List<Unit> units;
 	public GameObject buttonPrefab;
 	private GameObject startButton;
+
+	void Awake() {
+		sceneNavigator = (SceneNavigator)FindObjectOfType<SceneNavigator> ();
+	}
 
 	void Start () {
 		startButton = (GameObject)Instantiate (buttonPrefab,gameObject.transform.position, Quaternion.identity);

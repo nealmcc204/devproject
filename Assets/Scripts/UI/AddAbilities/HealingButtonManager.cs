@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class HealingButtonManager : MonoBehaviour {
 
 	// Use this for initialization
-	public SceneNavigator sceneNavigator;
+	private SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
 	private MagePlayer mp;
 
 	void Start () {
+		sceneNavigator = (SceneNavigator)FindObjectOfType<SceneNavigator> ();
 		mp = (MagePlayer)FindObjectOfType<MagePlayer> ();
 		SetUpButtons ();
 	}
@@ -67,11 +68,6 @@ public class HealingButtonManager : MonoBehaviour {
 		mp.RemoveDefensiveAbility (new DoubleHealS ());
 		mp.RemoveDefensiveAbility (new SingleHealM ());
 		mp.AddDefensiveAbility (new DoubleHealM ());
-		buttons [0].interactable = false;
-		buttons [1].interactable = false;
-		buttons [2].interactable = false;
-		buttons [3].interactable = false;
-		Advance ();
 	}
 
 	public void AddDoubleHealFull()
@@ -79,15 +75,12 @@ public class HealingButtonManager : MonoBehaviour {
 		mp.RemoveDefensiveAbility (new DoubleHealM ());
 		mp.RemoveDefensiveAbility (new SingleHealFull ());
 		mp.AddDefensiveAbility (new DoubleHealFull ());
-		buttons [4].interactable = false;
 		Advance ();
 	}
 
 	public void AddLesserRevive()
 	{
 		mp.AddDefensiveAbility (new LesserRevive ());
-		buttons [5].interactable = false;
-		buttons [6].interactable = true;
 		Advance ();
 	}
 
@@ -95,8 +88,6 @@ public class HealingButtonManager : MonoBehaviour {
 	{
 		mp.RemoveDefensiveAbility (new LesserRevive ());
 		mp.AddDefensiveAbility (new Revive ());
-		buttons [6].interactable = false;
-		buttons [7].interactable = true;
 		Advance ();
 	}
 
@@ -104,15 +95,12 @@ public class HealingButtonManager : MonoBehaviour {
 	{
 		mp.RemoveDefensiveAbility (new Revive ());
 		mp.AddDefensiveAbility (new GreaterRevive ());
-		buttons [7].interactable = false;
 		Advance ();
 	}
 
 	public void AddSingleWaterShield()
 	{
 		mp.AddDefensiveAbility (new SingleWaterShield ());
-		buttons [8].interactable = false;
-		buttons [9].interactable = true;
 		Advance ();
 	}
 
@@ -120,15 +108,12 @@ public class HealingButtonManager : MonoBehaviour {
 	{
 		mp.RemoveDefensiveAbility (new SingleWaterShield ());
 		mp.AddDefensiveAbility (new DoubleWaterShield ());
-		buttons [9].interactable = false;
 		Advance ();
 	}
 
 	public void AddSingleFireShield()
 	{
 		mp.AddDefensiveAbility (new SingleFireShield ());
-		buttons [10].interactable = false;
-		buttons [11].interactable = true;
 		Advance ();
 	}
 
@@ -136,15 +121,12 @@ public class HealingButtonManager : MonoBehaviour {
 	{
 		mp.RemoveDefensiveAbility (new SingleFireShield ());
 		mp.AddDefensiveAbility (new DoubleFireShield ());
-		buttons [11].interactable = false;
 		Advance ();
 	}
 
 	public void AddSingleEarthShield()
 	{
 		mp.AddDefensiveAbility (new SingleEarthShield ());
-		buttons [12].interactable = false;
-		buttons [13].interactable = true;
 		Advance ();
 	}
 
@@ -152,7 +134,6 @@ public class HealingButtonManager : MonoBehaviour {
 	{
 		mp.RemoveDefensiveAbility (new SingleEarthShield ());
 		mp.AddDefensiveAbility (new DoubleEarthShield ());
-		buttons [13].interactable = false;
 		Advance ();
 	}
 
@@ -194,10 +175,12 @@ public class HealingButtonManager : MonoBehaviour {
 				break;
 
 			case "Revive": 
+				buttons [5].interactable = false;
 				buttons [7].interactable = true;
 				break;
 
 			case "Greater Revive":
+				buttons [5].interactable = false;
 				break;
 
 			case "Single Water Shield":

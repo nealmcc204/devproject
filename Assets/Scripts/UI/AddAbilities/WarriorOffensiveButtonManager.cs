@@ -6,18 +6,15 @@ using UnityEngine.UI;
 public class WarriorOffensiveButtonManager : MonoBehaviour {
 
 	// Use this for initialization
-	public SceneNavigator sceneNavigator;
+	private SceneNavigator sceneNavigator;
 
 	public List<Button> buttons = new List<Button>();
 	public WarriorPlayer wp;
 
 	void Start () {
+		sceneNavigator = (SceneNavigator)FindObjectOfType<SceneNavigator> ();
 		wp = (WarriorPlayer)FindObjectOfType<WarriorPlayer> ();
-		foreach (Button b in buttons)
-			b.interactable = false;
-
-		buttons [0].interactable = true;
-		buttons [3].interactable = true;
+		SetUpButtons ();
 	}
 
 	// Update is called once per frame
@@ -75,6 +72,47 @@ public class WarriorOffensiveButtonManager : MonoBehaviour {
 		wp.AddOffensiveAbility (new StunSmashH());
 		buttons [5].interactable = false;
 		Advance ();
+	}
+
+	public void SetUpButtons()
+	{
+		foreach (Button b in buttons)
+			b.interactable = false;
+
+		foreach (OffensiveAbility oa in wp.GetOffensiveAbilities()) {
+			switch (oa.GetAbilityTag ()) {
+			case "Double Strike S":
+				buttons [0].interactable = true;
+				break;
+
+			case "Double Strike M":
+				buttons [1].interactable = true;
+				break;
+
+			case "Double Strike L":
+				buttons [2].interactable = true;
+				break;
+
+			case "Triple Strike L":
+				break;
+
+			case "Stun Smash S":
+				buttons [3].interactable = true;
+				break;
+
+			case "Stun Smash M":
+				buttons [4].interactable = true;
+				break;
+
+			case "Stun Smash L":
+				buttons [5].interactable = true;
+				break;
+
+			case "Stun Smash H":
+				break;
+			}
+		}
+
 	}
 
 	public void Advance()

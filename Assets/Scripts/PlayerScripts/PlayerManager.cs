@@ -7,8 +7,6 @@ public class PlayerManager : MonoBehaviour {
     // Use this for initialization
 	public GameObject magePrefab;
 	public GameObject warriorPrefab;
-	private GameObject canvas;
-
 	public static GameObject magePlayer;
 	public static GameObject warriorPlayer;
 
@@ -16,18 +14,6 @@ public class PlayerManager : MonoBehaviour {
     
     
     void Awake () {
-		canvas = GameObject.FindGameObjectWithTag ("MainCanvas");
-		magePlayer = GameObject.Find ("Mage Player");
-		if (magePlayer == null) {
-			magePlayer = (GameObject)Instantiate (magePrefab, new Vector3 (50, 0, 0), Quaternion.identity);
-			magePlayer.name = "Mage Player";
-
-
-		}
-		magePlayer.GetComponentInChildren<Canvas> ().sortingOrder = 1;
-		DontDestroyOnLoad (magePlayer);
-		Players [0] = magePlayer.GetComponentInChildren<MagePlayer> ();
-
 		warriorPlayer = GameObject.Find ("Warrior Player");
 		if (warriorPlayer == null) {
 			warriorPlayer = (GameObject)Instantiate (warriorPrefab, new Vector3 (50, 0, 0), Quaternion.identity);
@@ -35,10 +21,20 @@ public class PlayerManager : MonoBehaviour {
 		}
 		warriorPlayer.GetComponentInChildren<Canvas> ().sortingOrder = 1;
 		DontDestroyOnLoad (warriorPlayer);
-		Players [1] = warriorPlayer.GetComponentInChildren<WarriorPlayer> ();
+		Players [0] = warriorPlayer.GetComponentInChildren<WarriorPlayer> ();
+
+		magePlayer = GameObject.Find ("Mage Player");
+		if (magePlayer == null) {
+			magePlayer = (GameObject)Instantiate (magePrefab, new Vector3 (50, 0, 0), Quaternion.identity);
+			magePlayer.name = "Mage Player";
+		}
+		magePlayer.GetComponentInChildren<Canvas> ().sortingOrder = 1;
+		DontDestroyOnLoad (magePlayer);
+		Players [1] = magePlayer.GetComponentInChildren<MagePlayer> ();
 
 		foreach (Player p in Players) {
 			p.SetMaxHealth((int)(p.GetMaxHealth() * 1.1));
+			p.Revive ();
 			p.SetHealth (p.GetMaxHealth());
 		}
 		//magePlayer.transform.SetParent (canvas.transform, true);

@@ -1,18 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class UnitInfo : MonoBehaviour {
 
 	int maxHealth;
-	public GameObject healthBar;
+	public GameObject healthImage;
+	public GameObject shieldStatus;
+	private Component namePlate;
+	private Component healthBar;
+	Component[] objects;
 	Vector3 healthScale;
 	string healthText;
 	Unit self;
 
 	// Use this for initialization
-	void Start () {
-		self = gameObject.GetComponentInParent<Unit> ();
+	void Awake () {
+		self = gameObject.GetComponent<Unit> ();
+		objects = GetComponentsInChildren<Component> ();
+		foreach (Component obj in objects) {
+			if (obj.name == "NamePlate")
+				namePlate = obj;
+			else if (obj.name == "HealthBar")
+				healthBar = obj;
+		}
 	}
 	
 	// Update is called once per frame
@@ -20,14 +32,14 @@ public class UnitInfo : MonoBehaviour {
 		maxHealth = self.GetMaxHealth ();
 		healthScale = new Vector3 (1f, 1f, 1f);
 		healthText = maxHealth + "/" + maxHealth;
-		gameObject.GetComponentInChildren<Text> ().text = healthText;
-		healthBar.transform.localScale = healthScale; 
+		healthBar.GetComponentInChildren<Text> ().text = healthText;
+		healthImage.transform.localScale = healthScale; 
 		healthScale.x = GetPercentageHealth ();
-		healthBar.transform.localScale = healthScale;
+		healthImage.transform.localScale = healthScale;
 		UpdateHealthText ();
-		gameObject.GetComponentInChildren<Text> ().text = healthText;
+		healthBar.GetComponentInChildren<Text> ().text = healthText;
 		UpdateHealthColour ();
-
+		UpdateShieldColour ();
 	}
 
 	public float GetPercentageHealth()
@@ -38,7 +50,7 @@ public class UnitInfo : MonoBehaviour {
 
 	public void UpdateHealthText()
 	{
-		healthText = gameObject.GetComponentInParent<Unit> ().GetCurrentHealth () + "/" + maxHealth;
+		healthText = self.GetCurrentHealth () + "/" + maxHealth;
 	}
 
 	public void UpdateHealthColour()
@@ -46,24 +58,46 @@ public class UnitInfo : MonoBehaviour {
 		switch (self.GetStatus ()) {
 
 		case Status.BURNED:
-			healthBar.GetComponent<Image> ().color = new Color (1f, 0.5f, 0f);
+			healthImage.GetComponent<Image> ().color = new Color (1f, 0.5f, 0f);
 			break;
 
 		case Status.FROZEN:
-			healthBar.GetComponent<Image> ().color = Color.cyan;
+			healthImage.GetComponent<Image> ().color = Color.cyan;
 			break;
 
 		case Status.DAZED:
-			healthBar.GetComponent<Image> ().color = Color.yellow;
+			healthImage.GetComponent<Image> ().color = Color.yellow;
 			break;
 
 		case Status.STUNNED:
-			healthBar.GetComponent<Image> ().color = Color.grey;
+			healthImage.GetComponent<Image> ().color = Color.grey;
 			break;
 
 		default:
-			healthBar.GetComponent<Image> ().color = Color.green;
+			healthImage.GetComponent<Image> ().color = Color.green;
 			break;
+		}
+	}
+
+	public void UpdateShieldColour()
+	{
+		switch (self.GetShield ().GetShieldType ()) {
+		case ElementType.FIRE:
+			shieldStatus.GetComponent<Image> ().color = new Color (1f, 0.5f, 0f);
+			break;
+
+		case ElementType.WATER:
+			shieldStatus.GetComponent<Image> ().color = Color.cyan;
+			break;
+
+		case ElementType.EARTH:
+			shieldStatus.GetComponent<Image> ().color = Color.yellow;
+			break;
+
+		default:
+			shieldStatus.GetComponent<Image> ().color = Color.white;
+			break;
+		
 		}
 	}
 }
