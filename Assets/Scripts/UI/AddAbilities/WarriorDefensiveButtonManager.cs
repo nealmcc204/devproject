@@ -16,13 +16,6 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 		sceneNavigator = (SceneNavigator)FindObjectOfType<SceneNavigator> ();
 		wp = (WarriorPlayer)FindObjectOfType<WarriorPlayer> ();
 		SetUpButtons ();
-		foreach (Button b in buttons)
-			b.interactable = false;
-
-		buttons [0].interactable = true;
-		buttons [3].interactable = true;
-		buttons [4].interactable = true;
-		buttons [5].interactable = true;
 	}
 
 	// Update is called once per frame
@@ -33,8 +26,6 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 	public void AddTauntS()
 	{
 		wp.AddDefensiveAbility (new TauntS ());
-		buttons [0].interactable = false;
-		buttons [1].interactable = true;
 		Advance ();
 	}
 
@@ -42,8 +33,6 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 	{
 		wp.RemoveDefensiveAbility (new TauntS());
 		wp.AddDefensiveAbility (new TauntM());
-		buttons [1].interactable = false;
-		buttons [2].interactable = true;
 		Advance ();
 	}
 
@@ -51,28 +40,24 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 	{
 		wp.RemoveDefensiveAbility (new TauntM());
 		wp.AddDefensiveAbility (new TauntL());
-		buttons [2].interactable = false;
 		Advance ();
 	}
 
 	public void AddWeakRevive()
 	{
 		wp.AddDefensiveAbility (new WeakRevive ());
-		buttons [3].interactable = false;
 		Advance ();
 	}
 
 	public void AddWeakHeal()
 	{
 		wp.AddDefensiveAbility (new WeakHeal ());
-		buttons [4].interactable = false;
 		Advance ();
 	}
 		
 	public void AddWithstand()
 	{
 		wp.AddDefensiveAbility (new Withstand());
-		buttons [5].interactable = false;
 		Advance ();
 	}
 
@@ -80,6 +65,11 @@ public class WarriorDefensiveButtonManager : MonoBehaviour {
 	{
 		foreach (Button b in buttons)
 			b.interactable = false;
+
+		buttons [0].interactable = true;
+		buttons [3].interactable = true;
+		buttons [4].interactable = true;
+		buttons [5].interactable = true;
 
 		foreach (DefensiveAbility da in wp.GetDefensiveAbilities()) {
 			switch (da.GetAbilityTag ()) {

@@ -8,12 +8,12 @@ public abstract class Player : Unit {
 
     public List<DefensiveAbility> defensiveAbilities = new List<DefensiveAbility>();
     public List<OffensiveAbility> offensiveAbilities = new List<OffensiveAbility>();
+	public GameObject buttonPrefab;
 	private List<Enemy> selectedEnemyTargets = new List<Enemy>();
 	private List<Player> selectedFriendlyTargets = new List<Player> ();
 	private OffensiveAbility selectedOffensiveAbility;
 	private DefensiveAbility selectedDefensiveAbility;
 	private BaseAbility selectedAbility;
-	public GameObject buttonPrefab;
 	private Canvas canvas;
 	private List<GameObject> buttons = new List<GameObject> ();
 	private int numTargets;
@@ -240,6 +240,7 @@ public abstract class Player : Unit {
 	public bool UseAbility(DefensiveAbility ab, List<Player> targets)
 	{
 		bool result = false;
+		//PlayEffects (ab);
 		if (targets.Count == 1) {
 			Player target = targets [0];
 			result = ab.Execute (target);
@@ -252,6 +253,7 @@ public abstract class Player : Unit {
 	public bool UseAbility(OffensiveAbility ab, List<Enemy> targets)
 	{
 		bool result = false;
+		//PlayEffects (ab);
 		if (targets.Count == 1) {
 			Enemy target = targets [0];
 			result = ab.Execute (target);

@@ -18,6 +18,7 @@ class EasyHealerEnemy : HealerEnemy
     {
 		Enemy target = FindLowestPercentageHealth (enemies);
 		PrimaryMove (target);
+		//PlayEffects (ElementType.NONE);
 		SetTurnComplete (true);
     }
 

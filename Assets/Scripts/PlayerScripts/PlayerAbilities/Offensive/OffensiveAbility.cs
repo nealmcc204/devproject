@@ -6,6 +6,7 @@ public abstract class OffensiveAbility : BaseAbility {
 
 	public abstract bool Execute (Enemy target);
 	public abstract bool Execute(List<Enemy> targets);
+	public abstract ElementType AttackElement ();
 
 	protected int SmallDamage()
 	{

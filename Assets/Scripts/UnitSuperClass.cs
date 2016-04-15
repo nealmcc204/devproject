@@ -15,11 +15,13 @@ public abstract class Unit : MonoBehaviour {
 	private float damageReduction;
 	private Shield shield;
 	private Status status;
+	private EffectsManager effectsManager;
 
 
 	public abstract void DoMove(List<Player> players, List<Enemy> enemies);
 
 	void Start(){
+
 		shield = new Shield ();
 		status = Status.NONE;
 	}
@@ -182,4 +184,37 @@ public abstract class Unit : MonoBehaviour {
 	{
 		return turnComplete;
 	}
+
+	/*
+	public void PlayEffects(OffensiveAbility oa)
+	{
+		if(effectsManager == null)
+			effectsManager = GameObject.Find("Effects Manager").GetComponentInChildren<EffectsManager>();
+		
+		effectsManager.PlayEffects (oa);
+	}
+
+	public void PlayEffects(DefensiveAbility da)
+	{
+		if(effectsManager == null)
+			effectsManager = GameObject.Find("Effects Manager").GetComponentInChildren<EffectsManager>();
+		
+		effectsManager.PlayEffects (da);
+	}
+
+	public void PlayEffects(ElementType ele)
+	{
+		if(effectsManager == null)
+		effectsManager = GameObject.Find("Effects Manager").GetComponentInChildren<EffectsManager>();
+		
+		effectsManager.PlayEffects (ele);
+	}
+
+	public bool FinishedAnimating()
+	{
+		if(effectsManager == null)
+			effectsManager = GameObject.Find("Effects Manager").GetComponentInChildren<EffectsManager>();
+
+		return effectsManager.FinishedAnimating ();
+	}*/
 }

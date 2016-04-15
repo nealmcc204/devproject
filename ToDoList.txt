@@ -1,8 +1,5 @@
-Logging for player selections  (?)
+Fix multi target spells on single units.
 
-fix warrior levelling up (look at mage stuff)
+add onscreen log of moves made.
 
-add sounds, add basic animations
-
-add game over screen
- 
+add logging of what players select when leveling up

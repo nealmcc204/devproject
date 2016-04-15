@@ -3,7 +3,7 @@ using System.Collections;
 
 public abstract class BaseFire : OffensiveAbility {
 
-	protected ElementType AttackElement()
+	public override ElementType AttackElement()
 	{
 		return ElementType.FIRE;
 	}

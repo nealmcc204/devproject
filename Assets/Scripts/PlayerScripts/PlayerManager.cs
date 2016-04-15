@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour {
     void Awake () {
 		warriorPlayer = GameObject.Find ("Warrior Player");
 		if (warriorPlayer == null) {
-			warriorPlayer = (GameObject)Instantiate (warriorPrefab, new Vector3 (50, 0, 0), Quaternion.identity);
+			warriorPlayer = (GameObject)Instantiate (warriorPrefab, new Vector3 (50, -100, 0), Quaternion.identity);
 			warriorPlayer.name = "Warrior Player";
 		}
 		warriorPlayer.GetComponentInChildren<Canvas> ().sortingOrder = 1;

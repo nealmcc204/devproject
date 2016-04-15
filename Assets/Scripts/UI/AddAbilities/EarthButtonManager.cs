@@ -14,9 +14,6 @@ public class EarthButtonManager : MonoBehaviour {
 	void Start () {
 		sceneNavigator = (SceneNavigator)FindObjectOfType<SceneNavigator> ();
 		mp = (MagePlayer)FindObjectOfType<MagePlayer> ();
-		foreach (Button b in buttons)
-			b.interactable = false;
-
 		SetUpButtons ();
 	}
 	
@@ -102,6 +99,9 @@ public class EarthButtonManager : MonoBehaviour {
 
 	public void SetUpButtons()
 	{
+		foreach (Button b in buttons)
+			b.interactable = false;
+
 		foreach (OffensiveAbility oa in mp.GetOffensiveAbilities()) {
 			switch (oa.GetAbilityTag ()) {
 			case "Single Earth S": 
